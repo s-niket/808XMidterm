@@ -1,14 +1,14 @@
 # C++ Boilerplate
-[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/dpiet/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/dpiet/cpp-boilerplate?branch=master)
+[![Build Status](https://travis-ci.com/zzimits/808XMidterm.svg?branch=master)](https://travis-ci.com/zzimits/808XMidterm)
+[![Coverage Status](https://coveralls.io/repos/github/zzimits/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/zzimits/808XMidterm?branch=master)
 ---
 
 ## Overview
 
-Simple starter C++ project with:
+Controller design for a three wheeled robot. The controller takes in a desired heading and a current heading and outputs the steering angle and rear wheel velocities necessary to move into the new orientation. 
 
-- cmake
-- googletest
+## Product Backlog
+https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc-MU/edit?usp=sharing
 
 ## Standard install via command-line
 ```
