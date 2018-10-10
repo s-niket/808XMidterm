@@ -8,56 +8,65 @@
 #ifndef INCLUDE_CONTROLLER_HPP
 #define INCLUDE_CONTROLLER_HPP
 
+#include "Vehicle.hpp"
+#include <iostream>
 /**
  * @brief Class Controller
  * Class defines controller attributes and
- * member functions to calculate error and 
+ * member functions to calculate error and
  * get the contoller output for orientation
- * and velocity 
+ * and velocity
  */
 
-public class Controller{
+class Controller : Vehicle {
  private:
   double kp;
   double kd;
   double ki;
-  double steeringConstraint;
+  //double steeringConstraint;
   double steeringAngle;
   double leftWheelSpeed;
   double rightWheelSpeed;
-  double vehicleSpeed;
-  double WheelDiameter;
-  double steeringAngle;
-  double trackWidth;
-  
+  //double vehicleSpeed;
+  //double WheelDiameter;
+  //double trackWidth;
 
-  double calculateErrorOrientation(double initialOrientation,double desiredOrientation){  
-  
+
+  //new variables
+  double errorThreshold = 0.001;
+  double previousError = 0;
+  double previousErrorSum = 0;
+  double dTime = 0;
+
+  double calculateError(double initial, double desired) {
+    double error = 0;
+    return error;
   }
-  
-  double calculateErrorVelocity(double initialVelocity,double desiredVelocity){   
-  
-  }
-  
+
   double implementPID(){
-  
+    double output;
+    return output;
   }
-  
+
   double calculateSteeringAngle(){
-    
+    double steeringAngle;
+    return steeringAngle;
   }
-  
+
   double calculateWheelSpeedRatio(){
-    
+    double wheelSpeeds;
+    return wheelSpeeds;
   }
-  
+
  public:
-  Controller(double kp,double kd,double ki,double vehicleSpeed);
-  
+  Controller(double kp, double kd, double ki, double rightWheelSpeed,
+             double leftWheelSpeed);
+
   double compute(){
-    
+    double output;
+    return output;
   }
-    
+
   ~Controller();
 };
 
