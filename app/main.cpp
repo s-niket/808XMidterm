@@ -1,8 +1,8 @@
 #include <iostream>
-#include <lib.hpp>
+#include "Vehicle.hpp"
+#include "Controller.hpp"
 
 int main()
 {
-    dummy();
     return 0;
 }
