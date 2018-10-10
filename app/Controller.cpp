@@ -15,38 +15,27 @@
  * @param gainD          Derivative gain of type double
  */
 
-Controller::Controller(double steeringLimit, double wheelDiameter, double width,
-                       double base) {
-  steeringConstraint = steeringLimit;
-  wheelCircumference = wheelDiameter;
-  trackWidth = width;
-  wheelBase = base;
+Controller::Controller(double gainP, double gainI, double gainD){
+  kp = gainP;
+  ki = gainI;
+  kd = gainD;
 }
 
-
 /**
- * @brief                Method to calculate steering angle for executing turn
- * @param currentOrientation   Initial value of orientation of type double
- * @param desiredOrientation   Final value of orientation of type double
- * @return steeringAngle       Value of steering angle after introducing steering
- *                             constraint of type double
+ * @brief                Method to calculate error
+ * @param initialValue   initial value of velocity/orientation of type double
+ * @param desiredValue   final value of velocity/orientation of type double
  */
-double Controller::calculateSteeringAngle(double currentOrientation,
-                                          double desiredOrientation) {
-  double deltaOrientation = desiredOrientation - currentOrientation;
-  if (fabs(deltaOrientation) >= steeringConstraint)
-    steeringAngle = steeringConstraint
-        * (deltaOrientation / fabs(deltaOrientation));
-  else
-    steeringAngle = deltaOrientation;
-  return steeringAngle;
+
+double Controller::calculateError(double initialValue, double desiredValue) {
+  double error = initialValue - desiredValue;
+  return error;
 }
+
 /**
- * @brief                Method to calculate vehicle speed to set it to the
- *                       desired value by introducing acceleration
- * @param currentVelocity   Initial value of velocity of type double
- * @param desiredVelocity   Final value of velocity of type double
- * @return vehicleSpeed     Value of vehicle speed after acceleration of type double
+ * @brief                Method to implement PID given the gains and the initial
+ *                       desired values
+ * @return               the output of the controller after implemenation of PID
  */
 double Controller::calculateVehicleSpeed(double currentVelocity,
                                          double desiredVelocity) {
@@ -64,85 +53,19 @@ double Controller::calculateVehicleSpeed(double currentVelocity,
     vehicleSpeed = currentVelocity - acceleration;
   }
 
-  return vehicleSpeed;
+double Controller::implementPID() {
+  while (fabs(desiredVelocity - currentVelocity) > errorThreshold) {
+    double proportionalError = calculateError(currentVelocity, desiredVelocity);
+    double derivativeError = (proportionalError - previousError) / dTime;
+    previousErrorSum += (proportionalError * dTime);
+    double integralError = previousErrorSum;
+    double controllerOutput = kp * proportionalError + kd * derivativeError
+        + ki * integralError;
+    currentVelocity += controllerOutput;
+  }
+  return currentVelocity;
 }
-/**
- * @brief                Method to calculate vehicle's wheel speed ratio to
- *                       get the different wheel speeds
- * @return radiusRatio   Value of radius ratio of type double
- */
-double Controller::calculateWheelSpeedRatio() {
-  double radiusRatio;
-  double rearSpeed = vehicleSpeed/wheelCircumference;
-  if (steeringAngle != 0) {
-    turningRadius = wheelBase / tan(abs(steeringAngle) * M_PI / 180);
-    double leftRearRadius = turningRadius - (wheelBase / 2);
-    double rightRearRadius = turningRadius + (wheelBase / 2);
-    if (steeringAngle > 0)
-      radiusRatio = leftRearRadius / rightRearRadius;
-    else
-      radiusRatio = rightRearRadius / leftRearRadius;
-  } else
-    radiusRatio = 1;
-  leftWheelSpeed = rearSpeed*radiusRatio;
-  rightWheelSpeed = rearSpeed/radiusRatio;
-  return radiusRatio;
-}
-/**
- * @brief                Method to get vehicle speed
- * @return radiusRatio   Value of vehicle speed of type double
- */
-double Controller::getVehicleSpeed() {
-  return vehicleSpeed;
-}
-/**
- * @brief                Method to get vehicle's left wheel speed
- * @return radiusRatio   Value of left wheel speed of type double
- */
-double Controller::getLeftWheelSpeed() {
-  return leftWheelSpeed;
-}
-/**
- * @brief                Method to get vehicle's right wheel speed
- * @return radiusRatio   Value of right wheel speed of type double
- */
-double Controller::getRightWheelSpeed() {
-  return rightWheelSpeed;
-}
-/**
- * @brief                Method to get vehicle's turning radius for
- *                       executing the turn
- * @return radiusRatio   Value of turning radius of type double
- */
-double Controller::getTurningRadius() {
-  return turningRadius;
-}
-/**
- * @brief                Method to get steering angle for executing the turn
- * @return radiusRatio   Value of steering angle of type double
- */
-double Controller::getSteeringAngle() {
-  return steeringAngle;
-}
-/**
- * @brief                Method to compute the vehicle's steering angle given a desired
- *                       orientation and velocity
- * @param currentOrientation   Initial value of orientation of type double
- * @param desiredOrientation   Final value of orientation of type double
- * @param currentVelocity   Initial value of velocity of type double
- * @param desiredVelocity   Final value of velocity of type double
- * @return steeringAngle    Value of steering angle required for the turn of type double
- */
-double Controller::compute(double currentOrientation, double desiredOrientation,
-                           double currentVelocity, double desiredVelocity) {
-  calculateSteeringAngle(currentOrientation, desiredOrientation);
-  implementPID();
-  calculateVehicleSpeed(currentVelocity, desiredVelocity);
-  calculateWheelSpeedRatio();
-  return steeringAngle;
-}
-/*
- * @brief Destructor for Vehicle class
- */
-Controller::~Controller() {
+
+Controller::~Controller(){
+
 }
