@@ -12,7 +12,7 @@ https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
+git clone --recursive https://github.com/zzimits/808XMidterm
 cd <path to repository>
 mkdir build
 cd build
@@ -39,7 +39,7 @@ In your Eclipse workspace directory (or create a new one), checkout the repo (an
 ```
 mkdir -p ~/workspace
 cd ~/workspace
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
+git clone --recursive https://github.com/zzimits/808XMidterm
 ```
 
 In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
@@ -48,13 +48,13 @@ In your work directory, use cmake to create an Eclipse project for an [out-of-so
 cd ~/workspace
 mkdir -p boilerplate-eclipse
 cd boilerplate-eclipse
-cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../cpp-boilerplate/
+cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../808XMidterm/
 ```
 
 ## Import
 
 Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
-Select "boilerplate-eclipse" directory created previously as root directory -> Finish
+Select "808XMidterm" directory created previously as root directory -> Finish
 
 # Edit
 
