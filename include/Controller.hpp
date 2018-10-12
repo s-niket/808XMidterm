@@ -20,12 +20,18 @@
 
 class Controller : Vehicle {
  private:
+  // Proportional gain
   double kp;
+  // Derivative gain
   double kd;
+  // Integral gain
   double ki;
   //double steeringConstraint;
+  // Steering angle to be needed for motion
   double steeringAngle;
+  // Speed of left wheel of the vehicle
   double leftWheelSpeed;
+  // Speed of right wheel of the vehicle
   double rightWheelSpeed;
   //double vehicleSpeed;
   //double WheelDiameter;
@@ -33,40 +39,68 @@ class Controller : Vehicle {
 
 
   //new variables
+  // Threshold for PID controller
   double errorThreshold = 0.001;
+  // Previous error for the controller
   double previousError = 0;
+  // Sum of previous errors
   double previousErrorSum = 0;
+  // Difference in time intervals
   double dTime = 0;
 
+  /*
+   * @brief Function to calculate error in orientation
+   * and velocity
+   */
   double calculateError(double initial, double desired) {
     double error = 0;
     return error;
   }
 
+  /*
+   * @brief Implement PID controller for the given values
+   */
   double implementPID(){
     double output;
     return output;
   }
 
+  /*
+   * @brief Calculate steering angle to execute the turn
+   */
   double calculateSteeringAngle(){
     double steeringAngle;
     return steeringAngle;
   }
 
+  /*
+   * @brief Calculate the wheel speed ratios for
+   *        getting the different wheel speeds
+   */
   double calculateWheelSpeedRatio(){
     double wheelSpeeds;
     return wheelSpeeds;
   }
 
  public:
+  /*
+   * @brief Constructor for Controller class
+   */
   Controller(double kp, double kd, double ki, double rightWheelSpeed,
              double leftWheelSpeed);
 
+  /*
+   * @brief Function to compute the final orientation and
+   * velocities of the vehicle
+   */
   double compute(){
     double output;
     return output;
   }
 
+  /*
+   *@brief Destructor for class Controller
+   */
   ~Controller();
 };
 
