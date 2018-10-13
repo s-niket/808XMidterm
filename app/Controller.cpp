@@ -86,3 +86,11 @@ double Controller::calculateWheelSpeedRatio(){
   rightWheelSpeed = rearSpeed/radiusRatio;
   return radiusRatio;
 }
+
+double Controller::getLeftWheelSpeed(){
+	return leftWheelSpeed;
+}
+
+double Controller::getRightWheelSpeed(){
+	return rightWheelSpeed;
+}

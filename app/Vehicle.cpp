@@ -1,6 +1,6 @@
 /**
- * @file Vehicle.hpp
- * @author Niket Shah
+ * @file Controller.hpp
+ * @author Niket Shah Zachary Zimits 
  * @copyright 2018 Niket Shah Zachary Zimits
  * @brief Implementation of header for Vehicle class
  */
@@ -12,14 +12,12 @@
 /**
  * @brief                Constructor for Vehicle class
  * @param wheelD         Defines the wheel diameters of type double
- * @param steerAngleConstraint Defines the steering angle
- *                             constraint of type double
+ * @param steerAngleConstraint Defines the steering angle constraint of type double
  * @param trackW          Defines the track-width of the vehicle of type double
  */
 
-Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
-                 double wheelB) : pid(steerAngleConstraint, wheelD, trackW,
-               		  wheelB) {
+Vehicle::Vehicle(double wheelD,double steerAngleConstraint,
+          double trackW){
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
@@ -28,16 +26,7 @@ Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
   desiredVelocity = currentVelocity;
 }
 
-/**
- * @brief                Function to set the orientation of the
- *                       vehicle to a desired value
- * @param desiredOrient  Defines the desired orientation of type double
- * @return desiredOrientation Returns the desired orientation of the vehicle
- */
-
-double Vehicle::setOrientation(double desiredOrient) {
-  desiredOrientation = desiredOrient;
-  return desiredOrientation;
+Vehicle::~Vehicle() {
 }
 /**
  * @brief                Function to set the velocity of the
@@ -56,24 +45,14 @@ double Vehicle::setVelocity(double desiredVelo) {
  *                             after the turn of type double
  */
 
-double Vehicle::updateOrientation() {
-  double orientation;
-  double deltaOrientation;
+double Vehicle::updateOrientation(){
+  double _orientation;
   double distanceTraveled = currentVelocity * dTime;
-  if(pid.getTurningRadius()==0)
-	  deltaOrientation = 0;
+  double deltaOrientation = (distanceTraveled*360)/(2*M_PI*turnRadius);
+  if(orientControl.getSteeringAngle()>0)
+	  currentOrientation += deltaOrientation;
   else
-	  deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
-  if (pid.getSteeringAngle() > 0)
-    orientation = currentOrientation + deltaOrientation;
-  else
-	  orientation = currentOrientation - deltaOrientation;
-  if (orientation >= 360)
-    currentOrientation = orientation - 360;
-  else if (orientation < 0)
-    currentOrientation = 360 + orientation;
-  else
-    currentOrientation = orientation;
+	  currentOrientation -= deltaOrientation;
   return currentOrientation;
 }
 /**
@@ -101,24 +80,9 @@ double Vehicle::update(){
 	return currentOrientation;
 }
 
-/**
- * @brief                Function to get the value of orientation
- * @return currentOrientation  Returns the current orientation of the vehicle
- */
-double Vehicle::getOrientation() {
-  return currentOrientation;
-}
-
-/**
- * @brief                Function to get the value of orientation
- * @return currentOrientation  Returns the current orientation of the vehicle
- */
-double Vehicle::getVelocity() {
+double Vehicle::updateVelocity(){
+  double leftWheelSpeed = orientControl.getLeftWheelSpeed();
+  double rightWheelSpeed = orientControl.getRightWheelSpeed();
+  currentVelocity = (leftWheelSpeed+rightWheelSpeed)/2;
   return currentVelocity;
-}
-
-/*
- * @brief Destructor for Vehicle class
- */
-Vehicle::~Vehicle() {
 }
