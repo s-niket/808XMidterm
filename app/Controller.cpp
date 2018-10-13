@@ -77,10 +77,10 @@ Controller::~Controller(){
 
 
 double Controller::calculateWheelSpeedRatio(){
-  double rearRadius = wheelBase/tan(steeringAngle*M_PI/180);
+  turningRadius = wheelBase/tan(steeringAngle*M_PI/180);
   double rearSpeed = vehicleSpeed/wheelCircumference;
-  double leftRearRadius = rearRadius -(wheelBase/2);
-  double rightRearRadius = rearRadius +(wheelBase/2);
+  double leftRearRadius = turningRadius -(wheelBase/2);
+  double rightRearRadius = turningRadius +(wheelBase/2);
   double radiusRatio = leftRearRadius/rightRearRadius;
   leftWheelSpeed = rearSpeed*radiusRatio;
   rightWheelSpeed = rearSpeed/radiusRatio;

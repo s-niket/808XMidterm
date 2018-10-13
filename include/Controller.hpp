@@ -29,6 +29,8 @@ class Controller : Vehicle {
   double steeringConstraint;
   // Steering angle to be needed for motion
   double steeringAngle=0;
+  //Turning Radius
+  double turningRadius=0;
   // Speed of left wheel of the vehicle
   double leftWheelSpeed=0;
   // Speed of right wheel of the vehicle
@@ -87,6 +89,10 @@ class Controller : Vehicle {
    * @brief Returns the Right Wheel Speed
    */
   double getRightWheelSpeed();
+  /*
+   * @brief Returns the Turning Radius
+   */
+  double getTurningRadius();
 
  public:
   /*
