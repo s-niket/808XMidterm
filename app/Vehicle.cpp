@@ -7,6 +7,7 @@
 
 #include "Vehicle.hpp"
 #include <iostream>
+#include <math.h>
 
 /**
  * @brief                Constructor for Vehicle class
@@ -25,4 +26,20 @@ Vehicle::Vehicle(double wheelD,double steerAngleConstraint,
 Vehicle::~Vehicle() {
 }
 
+double Vehicle::updateOrientation(){
+  double _orientation;
+  double distanceTraveled = currentVelocity * dTime;
+  double deltaOrientation = (distanceTraveled*360)/(2*M_PI*turnRadius);
+  if(orientControl.getSteeringAngle()>0)
+	  currentOrientation += deltaOrientation;
+  else
+	  currentOrientation -= deltaOrientation;
+  return currentOrientation;
+}
 
+double Vehicle::updateVelocity(){
+  double leftWheelSpeed = orientControl.getLeftWheelSpeed();
+  double rightWheelSpeed = orientControl.getRightWheelSpeed();
+  currentVelocity = (leftWheelSpeed+rightWheelSpeed)/2;
+  return currentVelocity;
+}
