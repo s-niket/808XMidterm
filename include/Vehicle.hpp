@@ -22,8 +22,10 @@ class Vehicle {
   double wheelDiameter;
   // The steering angle constraint restricting the motion
   double steeringAngleConstraint;
-  // The length between the front and the back wheels
+  // The distance between the two back wheels
   double trackWidth;
+  // The length between the front and the back wheels
+  double wheelBase;
   // The current velocity of the vehicle
   double currentVelocity;
   // The desired velocity of the vehicle

@@ -26,16 +26,16 @@ class Controller : Vehicle {
   double kd;
   // Integral gain
   double ki;
-  //double steeringConstraint;
+  double steeringConstraint;
   // Steering angle to be needed for motion
-  double steeringAngle;
+  double steeringAngle=0;
   // Speed of left wheel of the vehicle
-  double leftWheelSpeed;
+  double leftWheelSpeed=0;
   // Speed of right wheel of the vehicle
-  double rightWheelSpeed;
-  //double vehicleSpeed;
-  //double WheelDiameter;
-  //double trackWidth;
+  double rightWheelSpeed=0;
+  double vehicleSpeed=0;
+  double wheelCircumference;
+  double trackWidth;
 
 
   //new variables
@@ -77,17 +77,14 @@ class Controller : Vehicle {
    * @brief Calculate the wheel speed ratios for
    *        getting the different wheel speeds
    */
-  double calculateWheelSpeedRatio(){
-    double wheelSpeeds;
-    return wheelSpeeds;
-  }
+  double calculateWheelSpeedRatio();
 
  public:
   /*
    * @brief Constructor for Controller class
    */
-  Controller(double kp, double kd, double ki, double rightWheelSpeed,
-             double leftWheelSpeed);
+  Controller(double kp, double kd, double ki, double steeringConstraint,
+		  double heelDiameter, double trackWidth, double wheelBase);
 
   /*
    * @brief Function to compute the final orientation and
