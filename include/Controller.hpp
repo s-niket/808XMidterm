@@ -79,6 +79,15 @@ class Controller : Vehicle {
    */
   double calculateWheelSpeedRatio();
 
+  /*
+   * @brief Returns the Left Wheel Speed
+   */
+  double getLeftWheelSpeed();
+  /*
+   * @brief Returns the Right Wheel Speed
+   */
+  double getRightWheelSpeed();
+
  public:
   /*
    * @brief Constructor for Controller class
