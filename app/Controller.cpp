@@ -15,10 +15,15 @@
  * @param gainD          Derivative gain of type double
  */
 
-Controller::Controller(double gainP, double gainI, double gainD){
+Controller::Controller(double gainP, double gainD, double gainI, double steeringLimit,
+		  double wheelDiameter, double width, double base){
   kp = gainP;
   ki = gainI;
   kd = gainD;
+  steeringConstraint = steeringLimit;
+  wheelCircumference = wheelDiameter;
+  trackWidth = width;
+  wheelBase = base;
 }
 
 /**
@@ -53,4 +58,16 @@ double Controller::implementPID() {
 
 Controller::~Controller(){
 
+}
+
+
+double Controller::calculateWheelSpeedRatio(){
+  double rearRadius = wheelBase/tan(steeringAngle*M_PI/180);
+  double rearSpeed = vehicleSpeed/wheelCircumference;
+  double leftRearRadius = rearRadius -(wheelBase/2);
+  double rightRearRadius = rearRadius +(wheelBase/2);
+  double radiusRatio = leftRearRadius/rightRearRadius;
+  leftWheelSpeed = rearSpeed*radiusRatio;
+  rightWheelSpeed = rearSpeed/radiusRatio;
+  return radiusRatio;
 }
