@@ -38,7 +38,8 @@ class Controller : Vehicle {
   double vehicleSpeed=0;
   double wheelCircumference;
   double trackWidth;
-
+  double wheelBase;
+  double acceleration=1.1;
 
   //new variables
   // Threshold for PID controller
@@ -70,10 +71,18 @@ class Controller : Vehicle {
   /*
    * @brief Calculate steering angle to execute the turn
    */
-  double calculateSteeringAngle(){
+  double calculateSteeringAngle(double currentOrientation, double desiredOrientation){
     double steeringAngle;
     return steeringAngle;
   }
+
+
+  /*
+   * @brief Calculate the total vehicle velocity
+   */
+  double calculateVehicleSpeed(double currentVelocity, double desiredVelocity);
+
+
 
   /*
    * @brief Calculate the wheel speed ratios for
@@ -105,10 +114,7 @@ class Controller : Vehicle {
    * @brief Function to compute the final orientation and
    * velocities of the vehicle
    */
-  double compute(){
-    double output;
-    return output;
-  }
+  double compute(double currentOrientation,double desiredOrientation, double currentVelocity, double desiredVelocity);
 
   /*
    *@brief Destructor for class Controller
