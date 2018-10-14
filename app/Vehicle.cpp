@@ -1,6 +1,6 @@
 /**
  * @file Controller.hpp
- * @author Niket Shah Zachary Zimits 
+ * @author Niket Shah
  * @copyright 2018 Niket Shah Zachary Zimits
  * @brief Implementation of header for Vehicle class
  */
@@ -17,7 +17,7 @@
  */
 
 Vehicle::Vehicle(double wheelD,double steerAngleConstraint,
-          double trackW){
+          double trackW, double wheelB){
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
