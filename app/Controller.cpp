@@ -64,8 +64,8 @@ Controller::~Controller(){
 
 double Controller::calculateSteeringAngle(double currentOrientation, double desiredOrientation){
   double deltaOrientation = desiredOrientation - currentOrientation;
-  if(abs(deltaOrientation) >= steeringConstraint)
-	  steeringAngle = steeringConstraint(deltaOrientation/abs(deltaOrientation));
+  if(fabs(deltaOrientation) >= steeringConstraint)
+	  steeringAngle = steeringConstraint*(deltaOrientation/fabs(deltaOrientation));
   else
 	  steeringAngle = deltaOrientation;
   return steeringAngle;
@@ -114,6 +114,10 @@ double Controller::getLeftWheelSpeed(){
 
 double Controller::getRightWheelSpeed(){
 	return rightWheelSpeed;
+}
+
+double Controller::getTurningRadius(){
+	return turningRadius;
 }
 
 double Controller::getSteeringAngle(){
