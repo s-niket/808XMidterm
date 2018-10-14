@@ -18,7 +18,7 @@
  * and velocity
  */
 
-class Controller{
+class Controller : Vehicle {
  private:
   // Proportional gain
   double kp;
@@ -35,13 +35,14 @@ class Controller{
   double leftWheelSpeed=0;
   // Speed of right wheel of the vehicle
   double rightWheelSpeed=0;
+  // Speed of the entire vehicle
   double vehicleSpeed=0;
+  // Circumference of the wheels
   double wheelCircumference;
+  // Distance between the two rear wheels
   double trackWidth;
+  // Distance between the front and rear wheels
   double wheelBase;
-  double acceleration=1.1;
-
-  //new variables
   // Threshold for PID controller
   double errorThreshold = 0.001;
   // Previous error for the controller
@@ -55,37 +56,32 @@ class Controller{
    * @brief Function to calculate error in orientation
    * and velocity
    */
-  double calculateError(double initial, double desired);
+  double calculateError(double initial, double desired) {
+    double error = 0;
+    return error;
+  }
 
   /*
    * @brief Implement PID controller for the given values
    */
-  double implementPID();
+  double implementPID(){
+    double output;
+    return output;
+  }
 
   /*
    * @brief Calculate steering angle to execute the turn
    */
-  double calculateSteeringAngle(double currentOrientation, double desiredOrientation);
-
-
-  /*
-   * @brief Calculate the total vehicle velocity
-   */
-  double calculateVehicleSpeed(double currentVelocity, double desiredVelocity);
-
-
+  double calculateSteeringAngle(){
+    double steeringAngle;
+    return steeringAngle;
+  }
 
   /*
    * @brief Calculate the wheel speed ratios for
    *        getting the different wheel speeds
    */
   double calculateWheelSpeedRatio();
-
- public:
-  /*
-     * @brief Returns the vehicle Speed
-     */
-    double getVehicleSpeed();
 
   /*
    * @brief Returns the Left Wheel Speed
@@ -100,19 +96,21 @@ class Controller{
    */
   double getTurningRadius();
 
-  double getSteeringAngle();
-
+ public:
   /*
    * @brief Constructor for Controller class
    */
   Controller(double kp, double kd, double ki, double steeringConstraint,
-		  double wheelDiameter, double trackWidth, double wheelBase);
+             double wheelDiameter, double trackWidth, double wheelBase);
 
   /*
    * @brief Function to compute the final orientation and
    * velocities of the vehicle
    */
-  double compute(double currentOrientation,double desiredOrientation, double currentVelocity, double desiredVelocity);
+  double compute(){
+    double output;
+    return output;
+  }
 
   /*
    *@brief Destructor for class Controller

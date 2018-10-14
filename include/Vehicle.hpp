@@ -49,7 +49,7 @@ class Vehicle {
   double setOrientation(double desiredOrient);
   double setVelocity(double desiredVelo);
   /*
-   * @brief Method to udpate the orientation of the vehicle
+   * @brief Method to update the orientation of the vehicle
    */
   double updateOrientation(double turnRadius,double steeringAngle);
 
