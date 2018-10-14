@@ -17,20 +17,21 @@
  */
 
 Vehicle::Vehicle(double wheelD,double steerAngleConstraint,
-          double trackW){
+          double trackW, double wheelB){
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
+  wheelBase = wheelB;
 }
 
 Vehicle::~Vehicle() {
 }
 
-double Vehicle::updateOrientation(){
+double Vehicle::updateOrientation(double turnRadius,double steeringAngle){
   double orientation;
   double distanceTraveled = currentVelocity * dTime;
-  double deltaOrientation = (distanceTraveled*360)/(2*M_PI*orientControl.getTurningRadius());
-  if(orientControl.getSteeringAngle()>0)
+  double deltaOrientation = (distanceTraveled*360)/(2*M_PI*turnRadius);
+  if(steeringAngle>0)
 	  orientation = currentOrientation + deltaOrientation;
   else
 	  orientation = currentOrientation - deltaOrientation;
@@ -43,9 +44,17 @@ double Vehicle::updateOrientation(){
   return currentOrientation;
 }
 
-double Vehicle::updateVelocity(){
-  double leftWheelSpeed = orientControl.getLeftWheelSpeed();
-  double rightWheelSpeed = orientControl.getRightWheelSpeed();
+double Vehicle::updateVelocity(double leftSpeed,double rightSpeed){
+  double leftWheelSpeed = leftSpeed;
+  double rightWheelSpeed = rightSpeed;
   currentVelocity = (leftWheelSpeed+rightWheelSpeed)/2;
   return currentVelocity;
+}
+
+double Vehicle::getOrientation(){
+	return currentOrientation;
+}
+
+double Vehicle::getVelocity(){
+	return currentVelocity;
 }

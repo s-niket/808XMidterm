@@ -30,31 +30,41 @@ class Vehicle {
   // The length between the front and the back wheels
   double wheelBase;
   // The current velocity of the vehicle
-  double currentVelocity;
+  double currentVelocity=0;
   // The desired velocity of the vehicle
   double desiredVelocity;
   // The current orientation of the vehicle
-  double currentOrientation;
+  double currentOrientation=0;
   // The desired orientation of the vehicle
   double desiredOrientation;
-  Controller orientControl(0.1,0.1,0.1,45,2,4,6);
+  //Controller orientControl(0.1,0.1,0.1,45,2,4,6);
 
  public:
   /*
    * @brief Constructor of class Vehicle
    */
   Vehicle(double wheelDiameter,double steeringAngleConstraint,
-          double trackWidth);
+          double trackWidth, double wheelBase);
 
   /*
    * @brief Method to udpate the orientation of the vehicle
    */
-  double updateOrientation();
+  double updateOrientation(double turnRadius,double steeringAngle);
 
   /*
    * @brief Method to update velocity of the vehicle
    */
-  double updateVelocity();
+  double updateVelocity(double leftSpeed,double rightSpeed);
+
+  /*
+   * @brief Method to return the orientation of the vehicle
+   */
+  double getOrientation();
+
+  /*
+   * @brief Method to return the velocity of the vehicle
+   */
+  double getVelocity();
 
   /*
    * @brief Destructor for class Vehicle
