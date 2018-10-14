@@ -83,6 +83,11 @@ class Controller{
 
  public:
   /*
+     * @brief Returns the vehicle Speed
+     */
+    double getVehicleSpeed();
+
+  /*
    * @brief Returns the Left Wheel Speed
    */
   double getLeftWheelSpeed();
