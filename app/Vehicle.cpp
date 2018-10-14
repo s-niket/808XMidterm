@@ -27,13 +27,19 @@ Vehicle::~Vehicle() {
 }
 
 double Vehicle::updateOrientation(){
-  double _orientation;
+  double orientation;
   double distanceTraveled = currentVelocity * dTime;
   double deltaOrientation = (distanceTraveled*360)/(2*M_PI*orientControl.getTurningRadius());
   if(orientControl.getSteeringAngle()>0)
-	  currentOrientation += deltaOrientation;
+	  orientation = currentOrientation + deltaOrientation;
   else
-	  currentOrientation -= deltaOrientation;
+	  orientation = currentOrientation - deltaOrientation;
+  if(orientation >= 360)
+	  currentOrientation = orientation-360;
+  else if(orientation < 0)
+	  currentOrientation = 360+orientation;
+  else
+	  currentOrientation = orientation;
   return currentOrientation;
 }
 
