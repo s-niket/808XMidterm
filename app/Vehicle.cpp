@@ -27,6 +27,16 @@ Vehicle::Vehicle(double wheelD,double steerAngleConstraint,
 Vehicle::~Vehicle() {
 }
 
+double Vehicle::setOrientation(double desiredOrient){
+	desiredOrientation = desiredOrient;
+	return desiredOrientation;
+}
+
+double Vehicle::setVelocity(double desiredVelo){
+	desiredVelocity = desiredVelo;
+	return desiredVelocity;
+}
+
 double Vehicle::updateOrientation(double turnRadius,double steeringAngle){
   double orientation;
   double distanceTraveled = currentVelocity * dTime;
@@ -44,10 +54,8 @@ double Vehicle::updateOrientation(double turnRadius,double steeringAngle){
   return currentOrientation;
 }
 
-double Vehicle::updateVelocity(double leftSpeed,double rightSpeed){
-  double leftWheelSpeed = leftSpeed;
-  double rightWheelSpeed = rightSpeed;
-  currentVelocity = (leftWheelSpeed+rightWheelSpeed)/2;
+double Vehicle::updateVelocity(double newVelocity){
+  currentVelocity = newVelocity;
   return currentVelocity;
 }
 
