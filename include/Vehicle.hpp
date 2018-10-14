@@ -47,7 +47,7 @@ class Vehicle {
           double trackWidth);
 
   /*
-   * @brief Method to udpate the orientation of the vehicle
+   * @brief Method to update the orientation of the vehicle
    */
   double updateOrientation();
 

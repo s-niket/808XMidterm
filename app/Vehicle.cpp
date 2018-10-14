@@ -23,9 +23,6 @@ Vehicle::Vehicle(double wheelD,double steerAngleConstraint,
   trackWidth = trackW;
 }
 
-Vehicle::~Vehicle() {
-}
-
 double Vehicle::updateOrientation(){
   double _orientation;
   double distanceTraveled = currentVelocity * dTime;
@@ -42,4 +39,7 @@ double Vehicle::updateVelocity(){
   double rightWheelSpeed = orientControl.getRightWheelSpeed();
   currentVelocity = (leftWheelSpeed+rightWheelSpeed)/2;
   return currentVelocity;
+}
+
+Vehicle::~Vehicle() {
 }

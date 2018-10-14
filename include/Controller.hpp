@@ -35,12 +35,14 @@ class Controller : Vehicle {
   double leftWheelSpeed=0;
   // Speed of right wheel of the vehicle
   double rightWheelSpeed=0;
+  // Speed of the entire vehicle
   double vehicleSpeed=0;
+  // Circumference of the wheels
   double wheelCircumference;
+  // Distance between the two rear wheels
   double trackWidth;
-
-
-  //new variables
+  // Distance between the front and rear wheels
+  double wheelBase;
   // Threshold for PID controller
   double errorThreshold = 0.001;
   // Previous error for the controller
@@ -99,7 +101,7 @@ class Controller : Vehicle {
    * @brief Constructor for Controller class
    */
   Controller(double kp, double kd, double ki, double steeringConstraint,
-		  double heelDiameter, double trackWidth, double wheelBase);
+             double wheelDiameter, double trackWidth, double wheelBase);
 
   /*
    * @brief Function to compute the final orientation and
