@@ -76,16 +76,16 @@ double Controller::calculateVehicleSpeed(double currentVelocity, double desiredV
   double deltaVelocity = desiredVelocity - currentVelocity;
   if(deltaVelocity>0)
 	  if(acceleration+currentVelocity>desiredVelocity)
-	  currentVelocity=desiredVelocity;
+		  vehicleSpeed=desiredVelocity;
 	  else
-		  currentVelocity = acceleration+currentVelocity;
+		  vehicleSpeed = acceleration+currentVelocity;
   else
 	  if(currentVelocity-acceleration<desiredVelocity)
-	  	  currentVelocity=desiredVelocity;
+	  	  vehicleSpeed=desiredVelocity;
 	  else
-	  	  currentVelocity = currentVelocity-acceleration;
+	  	  vehicleSpeed = currentVelocity-acceleration;
 
-  return currentVelocity;
+  return vehicleSpeed;
 }
 
 double Controller::calculateWheelSpeedRatio(){
@@ -106,6 +106,10 @@ double Controller::calculateWheelSpeedRatio(){
   leftWheelSpeed = rearSpeed*radiusRatio;
   rightWheelSpeed = rearSpeed/radiusRatio;
   return radiusRatio;
+}
+
+double Controller::getVehicleSpeed(){
+		return vehicleSpeed;
 }
 
 double Controller::getLeftWheelSpeed(){
