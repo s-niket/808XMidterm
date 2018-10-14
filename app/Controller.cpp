@@ -75,13 +75,47 @@ Controller::~Controller(){
 
 }
 
+double Controller::calculateSteeringAngle(double currentOrientation, double desiredOrientation){
+  double deltaOrientation = desiredOrientation - currentOrientation;
+  if(abs(deltaOrientation) >= steeringConstraint)
+	  steeringAngle = steeringConstraint(deltaOrientation/abs(deltaOrientation));
+  else
+	  steeringAngle = deltaOrientation;
+  return steeringAngle;
+}
+
+
+double Controller::calculateVehicleSpeed(double currentVelocity, double desiredVelocity){
+  double deltaVelocity = desiredVelocity - currentVelocity;
+  if(deltaVelocity>0)
+	  if(acceleration*currentVelocity>desiredVelocity)
+	  currentVelocity=desiredVelocity;
+	  else
+		  currentVelocity = acceleration*currentVelocity;
+  else
+	  if(currentVelocity/acceleration>desiredVelocity)
+	  	  currentVelocity=desiredVelocity;
+	  else
+	  	  currentVelocity = currentVelocity/acceleration;
+
+  return currentVelocity;
+}
 
 double Controller::calculateWheelSpeedRatio(){
-  turningRadius = wheelBase/tan(steeringAngle*M_PI/180);
+  double radiusRatio;
   double rearSpeed = vehicleSpeed/wheelCircumference;
-  double leftRearRadius = turningRadius -(wheelBase/2);
-  double rightRearRadius = turningRadius +(wheelBase/2);
-  double radiusRatio = leftRearRadius/rightRearRadius;
+  if(steeringAngle != 0)
+  {
+	  turningRadius = wheelBase/tan(abs(steeringAngle)*M_PI/180);
+	  double leftRearRadius = turningRadius -(wheelBase/2);
+	  double rightRearRadius = turningRadius +(wheelBase/2);
+	  if(steeringAngle>0)
+		 radiusRatio= leftRearRadius/rightRearRadius;
+	  else
+		  radiusRatio=rightRearRadius/leftRearRadius;
+  }
+  else
+	  radiusRatio=1;
   leftWheelSpeed = rearSpeed*radiusRatio;
   rightWheelSpeed = rearSpeed/radiusRatio;
   return radiusRatio;
@@ -93,4 +127,13 @@ double Controller::getLeftWheelSpeed(){
 
 double Controller::getRightWheelSpeed(){
 	return rightWheelSpeed;
+}
+
+double Controller::compute(double currentOrientation,double desiredOrientation, double currentVelocity, double desiredVelocity){
+  calculateSteeringAngle(currentOrientation,desiredOrientation);
+  implementPID();
+  calculateVehicleSpeed(currentVelocity,desiredVelocity);
+  calculateWheelSpeedRatio();
+  return steeringAngle;
+
 }
