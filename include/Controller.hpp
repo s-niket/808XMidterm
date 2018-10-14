@@ -18,7 +18,7 @@
  * and velocity
  */
 
-class Controller : Vehicle {
+class Controller{
  private:
   // Proportional gain
   double kp;
@@ -90,6 +90,7 @@ class Controller : Vehicle {
    */
   double calculateWheelSpeedRatio();
 
+ public:
   /*
    * @brief Returns the Left Wheel Speed
    */
@@ -103,12 +104,13 @@ class Controller : Vehicle {
    */
   double getTurningRadius();
 
- public:
+  double getSteeringAngle();
+
   /*
    * @brief Constructor for Controller class
    */
   Controller(double kp, double kd, double ki, double steeringConstraint,
-		  double heelDiameter, double trackWidth, double wheelBase);
+		  double wheelDiameter, double trackWidth, double wheelBase);
 
   /*
    * @brief Function to compute the final orientation and

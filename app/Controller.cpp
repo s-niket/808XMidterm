@@ -44,7 +44,7 @@ double Controller::calculateError(double initialValue, double desiredValue) {
  */
 
 double Controller::implementPID() {
-  while (fabs(desiredVelocity - currentVelocity) > errorThreshold) {
+ /* while (fabs(desiredVelocity - currentVelocity) > errorThreshold) {
     double proportionalError = calculateError(currentVelocity, desiredVelocity);
     double derivativeError = (proportionalError - previousError) / dTime;
     previousErrorSum += (proportionalError * dTime);
@@ -54,6 +54,8 @@ double Controller::implementPID() {
     currentVelocity += controllerOutput;
   }
   return currentVelocity;
+  */
+	return 0;
 }
 
 Controller::~Controller(){
@@ -114,6 +116,9 @@ double Controller::getRightWheelSpeed(){
 	return rightWheelSpeed;
 }
 
+double Controller::getSteeringAngle(){
+	return steeringAngle;
+}
 double Controller::compute(double currentOrientation,double desiredOrientation, double currentVelocity, double desiredVelocity){
   calculateSteeringAngle(currentOrientation,desiredOrientation);
   implementPID();
