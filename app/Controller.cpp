@@ -73,15 +73,15 @@ double Controller::calculateSteeringAngle(double currentOrientation, double desi
 double Controller::calculateVehicleSpeed(double currentVelocity, double desiredVelocity){
   double deltaVelocity = desiredVelocity - currentVelocity;
   if(deltaVelocity>0)
-	  if(acceleration*currentVelocity>desiredVelocity)
+	  if(acceleration+currentVelocity>desiredVelocity)
 	  currentVelocity=desiredVelocity;
 	  else
-		  currentVelocity = acceleration*currentVelocity;
+		  currentVelocity = acceleration+currentVelocity;
   else
-	  if(currentVelocity/acceleration>desiredVelocity)
+	  if(currentVelocity-acceleration<desiredVelocity)
 	  	  currentVelocity=desiredVelocity;
 	  else
-	  	  currentVelocity = currentVelocity/acceleration;
+	  	  currentVelocity = currentVelocity-acceleration;
 
   return currentVelocity;
 }
