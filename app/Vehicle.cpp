@@ -21,6 +21,10 @@ Vehicle::Vehicle(double wheelD,double steerAngleConstraint,
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
+  wheelBase = wheelB;
+}
+
+Vehicle::~Vehicle() {
 }
 
 double Vehicle::updateOrientation(){
@@ -41,5 +45,10 @@ double Vehicle::updateVelocity(){
   return currentVelocity;
 }
 
-Vehicle::~Vehicle() {
+double Vehicle::getOrientation(){
+	return currentOrientation;
+}
+
+double Vehicle::getVelocity(){
+	return currentVelocity;
 }
