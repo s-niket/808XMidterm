@@ -8,8 +8,9 @@
 #ifndef INCLUDE_CONTROLLER_HPP
 #define INCLUDE_CONTROLLER_HPP
 
-#include "Vehicle.hpp"
+
 #include <iostream>
+
 /**
  * @brief Class Controller
  * Class defines controller attributes and
@@ -18,7 +19,7 @@
  * and velocity
  */
 
-class Controller{
+class Controller {
  private:
   // Proportional gain
   double kp;
@@ -41,15 +42,11 @@ class Controller{
   double wheelCircumference;
   // Distance between the two rear wheels
   double trackWidth;
-<<<<<<< HEAD
   // Distance between the front and rear wheels
-  double wheelBase;
-=======
   double wheelBase;
   double acceleration=1.1;
 
   //new variables
->>>>>>> c609bb0e214a7ebe025aa39ef78bf6422cce3631
   // Threshold for PID controller
   double errorThreshold = 0.001;
   // Previous error for the controller
@@ -114,11 +111,7 @@ class Controller{
    * @brief Constructor for Controller class
    */
   Controller(double kp, double kd, double ki, double steeringConstraint,
-<<<<<<< HEAD
              double wheelDiameter, double trackWidth, double wheelBase);
-=======
-		  double wheelDiameter, double trackWidth, double wheelBase);
->>>>>>> c609bb0e214a7ebe025aa39ef78bf6422cce3631
 
   /*
    * @brief Function to compute the final orientation and
@@ -131,5 +124,6 @@ class Controller{
    */
   ~Controller();
 };
+
 
 #endif //INLCUDE_CONTROLLER_HPP

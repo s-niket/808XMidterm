@@ -37,7 +37,6 @@ class Vehicle {
   double currentOrientation=0;
   // The desired orientation of the vehicle
   double desiredOrientation;
-  //Controller orientControl(0.1,0.1,0.1,45,2,4,6);
 
  public:
   /*
