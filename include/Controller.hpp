@@ -63,26 +63,17 @@ class Controller{
    * @brief Function to calculate error in orientation
    * and velocity
    */
-  double calculateError(double initial, double desired) {
-    double error = 0;
-    return error;
-  }
+  double calculateError(double initial, double desired);
 
   /*
    * @brief Implement PID controller for the given values
    */
-  double implementPID(){
-    double output;
-    return output;
-  }
+  double implementPID();
 
   /*
    * @brief Calculate steering angle to execute the turn
    */
-  double calculateSteeringAngle(double currentOrientation, double desiredOrientation){
-    double steeringAngle;
-    return steeringAngle;
-  }
+  double calculateSteeringAngle(double currentOrientation, double desiredOrientation);
 
 
   /*
@@ -99,6 +90,11 @@ class Controller{
   double calculateWheelSpeedRatio();
 
  public:
+  /*
+     * @brief Returns the vehicle Speed
+     */
+    double getVehicleSpeed();
+
   /*
    * @brief Returns the Left Wheel Speed
    */
