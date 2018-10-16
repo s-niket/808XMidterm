@@ -61,8 +61,12 @@ double Vehicle::setVelocity(double desiredVelo) {
 
 double Vehicle::updateOrientation() {
   double orientation;
+  double deltaOrientation;
   double distanceTraveled = currentVelocity * dTime;
-  double deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
+  if(pid.getTurningRadius()==0)
+	  deltaOrientation = 0;
+  else
+	  deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
   if (pid.getSteeringAngle() > 0)
     orientation = currentOrientation + deltaOrientation;
   else
