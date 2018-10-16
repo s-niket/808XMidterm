@@ -1,5 +1,5 @@
 /**
- * @file Controller.hpp
+ * @file Vehicle.hpp
  * @author Niket Shah
  * @copyright 2018 Niket Shah Zachary Zimits
  * @brief Implementation of header for Vehicle class
@@ -58,9 +58,9 @@ double Vehicle::setVelocity(double desiredVelo) {
  * @return currentOrientation  Returns the current orientation of the vehicle
  *                             after the turn of type double
  */
+
 double Vehicle::updateOrientation() {
   double orientation;
-
   double distanceTraveled = currentVelocity * dTime;
   double deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
   if (pid.getSteeringAngle() > 0)
