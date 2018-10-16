@@ -24,7 +24,7 @@ int main() {
                    wheelBase);
   tricycle.setVelocity(desiredVelocity);
   tricycle.setOrientation(desiredOrientation);
-  Controller pid(.1, .1, .1, steeringAngleConstraint, wheelDiameter, trackWidth,
+  Controller pid(steeringAngleConstraint, wheelDiameter, trackWidth,
                  wheelBase);
 
   while ( fabs(tricycle.getOrientation() - desiredOrientation)> 1 || fabs(tricycle.getVelocity() - desiredVelocity) > .5) {

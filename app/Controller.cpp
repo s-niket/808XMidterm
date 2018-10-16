@@ -136,7 +136,6 @@ double Controller::getSteeringAngle() {
 double Controller::compute(double currentOrientation, double desiredOrientation,
                            double currentVelocity, double desiredVelocity) {
   calculateSteeringAngle(currentOrientation, desiredOrientation);
-  implementPID();
   calculateVehicleSpeed(currentVelocity, desiredVelocity);
   calculateWheelSpeedRatio();
   return steeringAngle;
