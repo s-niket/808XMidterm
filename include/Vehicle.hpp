@@ -37,6 +37,7 @@ class Vehicle {
   double currentOrientation = 0;
   // The desired orientation of the vehicle
   double desiredOrientation;
+  Controller pid;
 
  public:
   /*
@@ -47,15 +48,23 @@ class Vehicle {
 
   double setOrientation(double desiredOrient);
   double setVelocity(double desiredVelo);
+
+
+
   /*
    * @brief Method to update the orientation of the vehicle
    */
-  double updateOrientation(double turnRadius, double steeringAngle);
+  double updateOrientation();
 
   /*
    * @brief Method to update velocity of the vehicle
    */
-  double updateVelocity(double newVelocity);
+  double updateVelocity();
+
+  /*
+   * @brief Method to calculate a controller output and update the vehicle
+   */
+  double update();
 
   /*
    * @brief Method to return the orientation of the vehicle
