@@ -18,7 +18,8 @@
  */
 
 Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
-                 double wheelB) {
+                 double wheelB) : pid(.1, .1, .1, steerAngleConstraint, wheelD, trackW,
+               		  wheelB) {
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
@@ -55,11 +56,12 @@ double Vehicle::setVelocity(double desiredVelo) {
  * @return currentOrientation  Returns the current orientation of the vehicle
  *                             after the turn of type double
  */
-double Vehicle::updateOrientation(double turnRadius, double steeringAngle) {
+double Vehicle::updateOrientation() {
   double orientation;
+
   double distanceTraveled = currentVelocity * dTime;
-  double deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * turnRadius);
-  if (steeringAngle > 0)
+  double deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
+  if (pid.getSteeringAngle() > 0)
     orientation = currentOrientation + deltaOrientation;
   else
 	  orientation = currentOrientation - deltaOrientation;
@@ -78,10 +80,19 @@ double Vehicle::updateOrientation(double turnRadius, double steeringAngle) {
  * @return currentVelocity  Returns the current velocity of the
  *                          vehicle after the updation
  */
-double Vehicle::updateVelocity(double newVelocity) {
-  currentVelocity = newVelocity;
+double Vehicle::updateVelocity() {
+  currentVelocity = pid.getVehicleSpeed();
   return currentVelocity;
 }
+
+double Vehicle::update(){
+	pid.compute(currentOrientation, desiredOrientation,
+            currentVelocity, desiredVelocity);
+	updateVelocity();
+	updateOrientation();
+	return 0;
+}
+
 /**
  * @brief                Function to get the value of orientation
  * @return currentOrientation  Returns the current orientation of the vehicle

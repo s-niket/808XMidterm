@@ -28,13 +28,8 @@ int main() {
   Controller pid(.1, .1, .1, steeringAngleConstraint, wheelDiameter, trackWidth,
                  wheelBase);
 
-  while (delta > .1 || fabs(tricycle.getVelocity() - desiredVelocity) > .5) {
-    pid.compute(tricycle.getOrientation(), desiredOrientation,
-                tricycle.getVelocity(), desiredVelocity);
-    tricycle.updateOrientation(pid.getTurningRadius(), pid.getSteeringAngle());
-    tricycle.updateVelocity(pid.getVehicleSpeed());
-    std::cout << pid.getSteeringAngle() << "\n";
-    delta = fabs(tricycle.getOrientation() - desiredOrientation);
+  while ( fabs(tricycle.getOrientation() - desiredOrientation)> .1 || fabs(tricycle.getVelocity() - desiredVelocity) > .5) {
+    tricycle.update();
     }
 
   std::cout << tricycle.getOrientation() << " " << tricycle.getVelocity();
