@@ -88,7 +88,6 @@ class Controller {
    */
   double calculateWheelSpeedRatio();
 
- 
   /*
    * @brief Returns the vehicle Speed
    */
