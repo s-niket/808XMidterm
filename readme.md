@@ -1,6 +1,6 @@
 # C++ Boilerplate
-[![Build Status](https://travis-ci.com/zzimits/808XMidterm.svg?branch=master)](https://travis-ci.com/zzimits/808XMidterm)
-[![Coverage Status](https://coveralls.io/repos/github/zzimits/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/zzimits/808XMidterm?branch=master)
+[![Build Status](https://travis-ci.com/s-niket/808XMidterm.svg?branch=master)](https://travis-ci.com/s-niket/808XMidterm)
+[![Coverage Status](https://coveralls.io/repos/github/s-niket/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/s-niket/808XMidterm?branch=master)
 ---
 
 ## Overview
