@@ -19,6 +19,7 @@ TEST(calcVehicleSpeed, differenceOfTwoSpeeds) {
   Controller pid(30, 4, 4, 4);
   ASSERT_DOUBLE_EQ(pid.calculateVehicleSpeed(15, 25), 16.1);
   ASSERT_DOUBLE_EQ(pid.calculateVehicleSpeed(25, 15), 23.9);
+  ASSERT_DOUBLE_EQ(pid.calculateVehicleSpeed(25,25.5),25.5);
 }
 
 TEST(calcWheelSpeedRatio, getRadiusRatio) {
