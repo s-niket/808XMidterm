@@ -10,7 +10,7 @@ int main()
     double wheelDiameter = 2;
     double trackWidth = 4;
     double wheelBase = 4;
-    double desiredOrientation = 90;
+    double desiredOrientation = 270;
     double desiredVelocity=10;
     Vehicle tricycle(wheelDiameter,steeringAngleConstraint,trackWidth,wheelBase);
     tricycle.setVelocity(desiredVelocity);
@@ -21,7 +21,6 @@ int main()
 		pid.compute(tricycle.getOrientation(),desiredOrientation,tricycle.getVelocity(),desiredVelocity);
 		tricycle.updateOrientation(pid.getTurningRadius(),pid.getSteeringAngle());
 		tricycle.updateVelocity(pid.getVehicleSpeed());
-		std::cout<<pid.getSteeringAngle()<<"\n";
 		delta = fabs(tricycle.getOrientation()-desiredOrientation);
     }
 
