@@ -5,11 +5,12 @@
  * @brief Header for Controller class
  */
 
-#ifndef INCLUDE_CONTROLLER_HPP
-#define INCLUDE_CONTROLLER_HPP
+#ifndef INCLUDE_CONTROLLER_HPP_
+#define INCLUDE_CONTROLLER_HPP_
 
-#include "Vehicle.hpp"
+
 #include <iostream>
+
 /**
  * @brief Class Controller
  * Class defines controller attributes and
@@ -18,7 +19,7 @@
  * and velocity
  */
 
-class Controller{
+class Controller {
  private:
   // Proportional gain
   double kp;
@@ -28,20 +29,24 @@ class Controller{
   double ki;
   double steeringConstraint;
   // Steering angle to be needed for motion
-  double steeringAngle=0;
-  //Turning Radius
-  double turningRadius=0;
+  double steeringAngle = 0;
+  // Turning Radius
+  double turningRadius = 0;
   // Speed of left wheel of the vehicle
-  double leftWheelSpeed=0;
+  double leftWheelSpeed = 0;
   // Speed of right wheel of the vehicle
-  double rightWheelSpeed=0;
-  double vehicleSpeed=0;
+  double rightWheelSpeed = 0;
+  // Speed of the entire vehicle
+  double vehicleSpeed = 0;
+  // Circumference of the wheels
   double wheelCircumference;
+  // Distance between the two rear wheels
   double trackWidth;
+  // Distance between the front and rear wheels
   double wheelBase;
-  double acceleration=1.1;
+  double acceleration = 1.1;
 
-  //new variables
+  // new variables
   // Threshold for PID controller
   double errorThreshold = 0.001;
   // Previous error for the controller
@@ -65,7 +70,8 @@ class Controller{
   /*
    * @brief Calculate steering angle to execute the turn
    */
-  double calculateSteeringAngle(double currentOrientation, double desiredOrientation);
+  double calculateSteeringAngle(double currentOrientation,
+                                double desiredOrientation);
 
 
   /*
@@ -83,9 +89,9 @@ class Controller{
 
  public:
   /*
-     * @brief Returns the vehicle Speed
-     */
-    double getVehicleSpeed();
+   * @brief Returns the vehicle Speed
+   */
+  double getVehicleSpeed();
 
   /*
    * @brief Returns the Left Wheel Speed
@@ -99,20 +105,23 @@ class Controller{
    * @brief Returns the Turning Radius
    */
   double getTurningRadius();
-
+  /*
+   * @brief Returns the steering angle
+   */
   double getSteeringAngle();
 
   /*
    * @brief Constructor for Controller class
    */
   Controller(double kp, double kd, double ki, double steeringConstraint,
-		  double wheelDiameter, double trackWidth, double wheelBase);
+             double wheelDiameter, double trackWidth, double wheelBase);
 
   /*
    * @brief Function to compute the final orientation and
    * velocities of the vehicle
    */
-  double compute(double currentOrientation,double desiredOrientation, double currentVelocity, double desiredVelocity);
+  double compute(double currentOrientation, double desiredOrientation,
+                 double currentVelocity, double desiredVelocity);
 
   /*
    *@brief Destructor for class Controller
@@ -120,4 +129,4 @@ class Controller{
   ~Controller();
 };
 
-#endif //INLCUDE_CONTROLLER_HPP
+#endif  // INCLUDE_CONTROLLER_HPP_

@@ -5,8 +5,8 @@
  * @brief Header for Vehicle class
  */
 
-#ifndef INCLUDE_VEHICLE_HPP
-#define INCLUDE_VEHICLE_HPP
+#ifndef INCLUDE_VEHICLE_HPP_
+#define INCLUDE_VEHICLE_HPP_
 
 #include <iostream>
 #include "Controller.hpp"
@@ -30,28 +30,27 @@ class Vehicle {
   // The length between the front and the back wheels
   double wheelBase;
   // The current velocity of the vehicle
-  double currentVelocity=1;
+  double currentVelocity = 1;
   // The desired velocity of the vehicle
   double desiredVelocity;
   // The current orientation of the vehicle
-  double currentOrientation=0;
+  double currentOrientation = 0;
   // The desired orientation of the vehicle
   double desiredOrientation;
-  //Controller orientControl(0.1,0.1,0.1,45,2,4,6);
 
  public:
   /*
    * @brief Constructor of class Vehicle
    */
-  Vehicle(double wheelDiameter,double steeringAngleConstraint,
+  Vehicle(double wheelDiameter, double steeringAngleConstraint,
           double trackWidth, double wheelBase);
 
   double setOrientation(double desiredOrient);
   double setVelocity(double desiredVelo);
   /*
-   * @brief Method to udpate the orientation of the vehicle
+   * @brief Method to update the orientation of the vehicle
    */
-  double updateOrientation(double turnRadius,double steeringAngle);
+  double updateOrientation(double turnRadius, double steeringAngle);
 
   /*
    * @brief Method to update velocity of the vehicle
@@ -75,5 +74,4 @@ class Vehicle {
 };
 
 
-
-#endif //INLCUDE_VEHICLE_HPP
+#endif  // INCLUDE_VEHICLE_HPP_
