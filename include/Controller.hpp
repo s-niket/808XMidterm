@@ -56,6 +56,8 @@ class Controller {
   // Difference in time intervals
   double dTime = 0;
 
+
+ public:
   /*
    * @brief Function to calculate error in orientation
    * and velocity
@@ -87,7 +89,7 @@ class Controller {
    */
   double calculateWheelSpeedRatio();
 
- public:
+
   /*
    * @brief Returns the vehicle Speed
    */

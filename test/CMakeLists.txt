@@ -5,6 +5,8 @@ add_executable(
     main.cpp
     testController.cpp
     testVehicle.cpp
+    ../app/Vehicle.cpp
+    ../app/Controller.cpp
 )
 
 target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include 
