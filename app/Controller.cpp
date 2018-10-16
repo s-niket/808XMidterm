@@ -15,11 +15,16 @@
  * @param gainD          Derivative gain of type double
  */
 
+<<<<<<< HEAD
 Controller::Controller(double gainP, double gainD, double gainI, double steeringLimit,
 		  double wheelDiameter, double width, double base){
   kp = gainP;
   ki = gainI;
   kd = gainD;
+=======
+Controller::Controller(double steeringLimit, double wheelDiameter, double width,
+                       double base) {
+>>>>>>> 58f8098... [#22] Fixed Doxygen Commenting
   steeringConstraint = steeringLimit;
   wheelCircumference = wheelDiameter;
   trackWidth = width;
