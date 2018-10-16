@@ -18,7 +18,7 @@
  */
 
 Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
-                 double wheelB) : pid(.1, .1, .1, steerAngleConstraint, wheelD, trackW,
+                 double wheelB) : pid(steerAngleConstraint, wheelD, trackW,
                		  wheelB) {
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
@@ -52,9 +52,6 @@ double Vehicle::setVelocity(double desiredVelo) {
 /**
  * @brief                Function to update the orientation of
  *                       the vehicle to a desired value
- * @param turnRadius     Defines the radius to execute the turn of type double
- * @param steeringAngle  Defines the steering angle to execute
- *                       the turn of type double
  * @return currentOrientation  Returns the current orientation of the vehicle
  *                             after the turn of type double
  */
@@ -84,19 +81,24 @@ double Vehicle::updateOrientation() {
  *                       the vehicle to a desired value
  * @param newVelocity    Defines the desired velocity of type double
  * @return currentVelocity  Returns the current velocity of the
- *                          vehicle after the updation
+ *                          vehicle after the update
  */
 double Vehicle::updateVelocity() {
   currentVelocity = pid.getVehicleSpeed();
   return currentVelocity;
 }
-
+/**
+ * @brief                Function to calculate the controller output
+ *                       then call the update velocity and orientation
+ *                       functions.
+ * @return currentVelocity  Returns the current orientation
+ */
 double Vehicle::update(){
 	pid.compute(currentOrientation, desiredOrientation,
             currentVelocity, desiredVelocity);
 	updateVelocity();
 	updateOrientation();
-	return 0;
+	return currentOrientation;
 }
 
 /**
