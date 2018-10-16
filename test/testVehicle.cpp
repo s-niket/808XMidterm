@@ -23,17 +23,17 @@ TEST(setVelocity, setDesiredVelocity) {
 
 TEST(updateOrientation, updateCurrentOrientation) {
   Vehicle tricycle(4, 30, 2, 1);
-  EXPECT_NEAR(tricycle.updateOrientation(5, 90), 0.57, 0.01);
-  EXPECT_NEAR(tricycle.updateOrientation(5, -25), 359.42, 0.01);
+  EXPECT_NEAR(tricycle.updateOrientation(), 0, 0.01);
+  EXPECT_NEAR(tricycle.updateOrientation(), 0, 0.01);
 }
 
 TEST(updateVelocity, retrieveUpdatedVelocity) {
   Vehicle tricycle(4, 30, 2, 1);
-  EXPECT_EQ(tricycle.updateVelocity(10), 10);
+  EXPECT_EQ(tricycle.updateVelocity(), 0);
 }
 
 TEST(getVelocity, retriveVelocity) {
   Vehicle tricycle(4, 30, 2, 1);
-  tricycle.updateVelocity(10);
-  EXPECT_EQ(tricycle.getVelocity(), 10);
+  tricycle.updateVelocity();
+  EXPECT_EQ(tricycle.getVelocity(), 0);
 }
