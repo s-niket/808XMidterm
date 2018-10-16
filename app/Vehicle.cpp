@@ -39,10 +39,20 @@ double Vehicle::setVelocity(double desiredVelo){
 
 double Vehicle::updateOrientation(double turnRadius,double steeringAngle){
   double orientation;
+  double deltaOrientation;
   double distanceTraveled = currentVelocity * dTime;
+<<<<<<< HEAD
   double deltaOrientation = (distanceTraveled*360)/(2*M_PI*turnRadius);
   if(steeringAngle>0)
 	  orientation = currentOrientation + deltaOrientation;
+=======
+  if(pid.getTurningRadius()==0)
+	  deltaOrientation = 0;
+  else
+	  deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
+  if (pid.getSteeringAngle() > 0)
+    orientation = currentOrientation + deltaOrientation;
+>>>>>>> 2a8f5bf... [#12] fixed unit tests for new class implementation
   else
 	  orientation = currentOrientation - deltaOrientation;
   if(orientation >= 360)

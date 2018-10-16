@@ -37,7 +37,7 @@ TEST(updateOrientation, updateCurrentOrientation) {
 
 TEST(updateVelocity, retrieveUpdatedVelocity) {
   Vehicle tricycle(4, 30, 2, 1);
-  EXPECT_EQ(tricycle.updateVelocity(), 0);
+  EXPECT_EQ(tricycle.updateVelocity(10), 10);
 }
 
 TEST(getVelocity, retriveVelocity) {
