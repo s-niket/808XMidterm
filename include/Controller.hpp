@@ -42,7 +42,6 @@ class Controller {
   double wheelCircumference;
   // Distance between the two rear wheels
   double trackWidth;
-<<<<<<< HEAD
   // Distance between the front and rear wheels
   double wheelBase;
   double acceleration = 1.1;
@@ -56,7 +55,6 @@ class Controller {
   double previousErrorSum = 0;
   // Difference in time intervals
   double dTime = 0;
-
 
  public:
   /*
@@ -90,7 +88,7 @@ class Controller {
    */
   double calculateWheelSpeedRatio();
 
-
+ 
   /*
    * @brief Returns the vehicle Speed
    */
@@ -117,11 +115,7 @@ class Controller {
    * @brief Constructor for Controller class
    */
   Controller(double kp, double kd, double ki, double steeringConstraint,
-<<<<<<< HEAD
              double wheelDiameter, double trackWidth, double wheelBase);
-=======
-		  double wheelDiameter, double trackWidth, double wheelBase);
->>>>>>> c609bb0e214a7ebe025aa39ef78bf6422cce3631
 
   /*
    * @brief Function to compute the final orientation and

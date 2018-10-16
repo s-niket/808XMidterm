@@ -1,5 +1,5 @@
 /**
- * @file Controller.hpp
+ * @file Vehicle.hpp
  * @author Niket Shah
  * @copyright 2018 Niket Shah Zachary Zimits
  * @brief Implementation of header for Vehicle class
@@ -18,14 +18,11 @@
  */
 
 Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
-                 double wheelB) : pid(.1, .1, .1, steerAngleConstraint, wheelD, trackW,
-               		  wheelB) {
+                 double wheelB) {
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
   wheelBase = wheelB;
-  desiredOrientation = currentOrientation;
-  desiredVelocity = currentVelocity;
 }
 
 /**
@@ -58,12 +55,11 @@ double Vehicle::setVelocity(double desiredVelo) {
  * @return currentOrientation  Returns the current orientation of the vehicle
  *                             after the turn of type double
  */
-double Vehicle::updateOrientation() {
-  double orientation;
-
+double Vehicle::updateOrientation(double turnRadius, double steeringAngle) {
+  double orientation=0;
   double distanceTraveled = currentVelocity * dTime;
-  double deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
-  if (pid.getSteeringAngle() > 0)
+  double deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * turnRadius);
+  if (steeringAngle > 0)
     orientation = currentOrientation + deltaOrientation;
   else
 	  orientation = currentOrientation - deltaOrientation;
@@ -82,19 +78,10 @@ double Vehicle::updateOrientation() {
  * @return currentVelocity  Returns the current velocity of the
  *                          vehicle after the updation
  */
-double Vehicle::updateVelocity() {
-  currentVelocity = pid.getVehicleSpeed();
+double Vehicle::updateVelocity(double newVelocity) {
+  currentVelocity = newVelocity;
   return currentVelocity;
 }
-
-double Vehicle::update(){
-	pid.compute(currentOrientation, desiredOrientation,
-            currentVelocity, desiredVelocity);
-	updateVelocity();
-	updateOrientation();
-	return 0;
-}
-
 /**
  * @brief                Function to get the value of orientation
  * @return currentOrientation  Returns the current orientation of the vehicle
