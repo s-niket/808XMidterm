@@ -24,6 +24,8 @@ Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
   wheelBase = wheelB;
+  desiredOrientation = currentOrientation;
+  desiredVelocity = currentVelocity;
 }
 
 /**
