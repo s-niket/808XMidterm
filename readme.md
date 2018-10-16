@@ -1,6 +1,7 @@
 # C++ Boilerplate
 [![Build Status](https://travis-ci.com/zzimits/808XMidterm.svg?branch=master)](https://travis-ci.com/zzimits/808XMidterm)
 [![Coverage Status](https://coveralls.io/repos/github/zzimits/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/zzimits/808XMidterm?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
 
 ## Overview
