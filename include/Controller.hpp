@@ -21,30 +21,24 @@
 
 class Controller {
  private:
-  // Proportional gain
-  double kp;
-  // Derivative gain
-  double kd;
-  // Integral gain
-  double ki;
-  double steeringConstraint;
-  // Steering angle to be needed for motion
-  double steeringAngle = 0;
-  // Turning Radius
-  double turningRadius = 0;
-  // Speed of left wheel of the vehicle
-  double leftWheelSpeed = 0;
-  // Speed of right wheel of the vehicle
-  double rightWheelSpeed = 0;
-  // Speed of the entire vehicle
-  double vehicleSpeed = 0;
-  // Circumference of the wheels
-  double wheelCircumference;
-  // Distance between the two rear wheels
-  double trackWidth;
-  // Distance between the front and rear wheels
-  double wheelBase;
-  double acceleration = 1.1;
+  double steeringConstraint;/*!<maximum value for steering angle  */
+  //
+  double steeringAngle = 0;/*!<Steering angle to be needed for motion  */
+  //
+  double turningRadius = 0;/*!<Turning Radius  */
+  //
+  double leftWheelSpeed = 0;/*!<Speed of left wheel of the vehicle  */
+  //
+  double rightWheelSpeed = 0;/*!<Speed of right wheel of the vehicle  */
+  //
+  double vehicleSpeed = 0;/*!<Speed of the entire vehicle  */
+  //
+  double wheelCircumference;/*!<Circumference of the wheels  */
+  //
+  double trackWidth;/*!<Distance between the two rear wheels  */
+  //
+  double wheelBase;/*!<Distance between the front and rear wheels  */
+  double acceleration = 1.1;/*!<value to increment the velocity  */
 
   // new variables
   // Threshold for PID controller
@@ -57,17 +51,6 @@ class Controller {
   double dTime = 0;
 
  public:
-  /*
-   * @brief Function to calculate error in orientation
-   * and velocity
-   */
-  double calculateError(double initial, double desired);
-
-  /*
-   * @brief Implement PID controller for the given values
-   */
-  double implementPID();
-
   /*
    * @brief Calculate steering angle to execute the turn
    */
@@ -114,7 +97,7 @@ class Controller {
   /*
    * @brief Constructor for Controller class
    */
-  Controller(double kp, double kd, double ki, double steeringConstraint,
+  Controller(double steeringConstraint,
              double wheelDiameter, double trackWidth, double wheelBase);
 
   /*

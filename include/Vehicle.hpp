@@ -19,25 +19,16 @@
 
 class Vehicle {
  private:
-  // diameter of the wheels
-  double wheelDiameter;
-  // Time step for controller inputs
-  double dTime = 0.05;
-  // The steering angle constraint restricting the motion
-  double steeringAngleConstraint;
-  // The distance between the two back wheels
-  double trackWidth;
-  // The length between the front and the back wheels
-  double wheelBase;
-  // The current velocity of the vehicle
-  double currentVelocity = 1;
-  // The desired velocity of the vehicle
-  double desiredVelocity;
-  // The current orientation of the vehicle
-  double currentOrientation = 0;
-  // The desired orientation of the vehicle
-  double desiredOrientation;
-  Controller pid;
+  double wheelDiameter;/*!<diameter of the wheels  */
+  double dTime = 0.05;/*!< Time step for controller inputs */
+  double steeringAngleConstraint;/*!<The steering angle constraint restricting the motion  */
+  double trackWidth;/*!<The distance between the two back wheels  */
+  double wheelBase;/*!<The length between the front and the back wheels  */
+  double currentVelocity = 1;/*!<The current velocity of the vehicle  */
+  double desiredVelocity;/*!<The desired velocity of the vehicle  */
+  double currentOrientation = 0;/*!<dThe current orientation of the vehicle  */
+  double desiredOrientation;/*!<The desired orientation of the vehicle  */
+  Controller pid;/*!<Instance of the controller class  */
 
  public:
   /*
