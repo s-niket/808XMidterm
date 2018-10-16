@@ -32,7 +32,7 @@ int main() {
     std::cout << tricycle.getOrientation() << " " << tricycle.getVelocity()<<"\n";
     }
 
-
+std::cout<<tricycle.getOrientation()<<" "<<tricycle.getVelocity();
 
 
 	return 0;
