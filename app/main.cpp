@@ -37,6 +37,7 @@ int main() {
     }
 
 
-
+ std::cout << "You have achieved your desired orientation and velocity!"
+            << std::endl;
   return 0;
 }

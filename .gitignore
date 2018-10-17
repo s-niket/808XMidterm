@@ -10,3 +10,6 @@ build/
 # Python
 *.pyc
 /.metadata/
+
+# Vim files
+*.swp
