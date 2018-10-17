@@ -25,7 +25,7 @@ int main() {
   std::cout << "Please enter the desired orientation (0 to 360 degrees): "
             << std::endl;
   std::cin >> desiredOrientation;
-  std::cout << "Please enter the desired position: ";
+  std::cout << "Please enter the desired velocity: ";
   std::cin >> desiredVelocity;
   tricycle.setVelocity(desiredVelocity);
   tricycle.setOrientation(desiredOrientation);
