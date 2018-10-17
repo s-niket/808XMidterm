@@ -1,0 +1,115 @@
+\href{https://travis-ci.com/zzimits/808XMidterm}{\tt } \href{https://coveralls.io/github/zzimits/808XMidterm?branch=master}{\tt } \subsection*{\href{https://opensource.org/licenses/MIT}{\tt } }
+
+\subsection*{Overview}
+
+Controller design for a three wheeled robot. The controller takes in a desired heading and a current heading and outputs the steering angle and rear wheel velocities necessary to move into the new orientation.
+
+\subsection*{Product Backlog}
+
+\href{https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc-MU/edit?usp=sharing}{\tt https\+://docs.\+google.\+com/spreadsheets/d/1\+Py2qpy\+Gf\+De\+V\+T\+\_\+e\+R\+Lim\+A\+Q\+Fq\+Mv2-\/7tj\+Fe\+Gu\+S7\+V\+Bz\+Tc-\/\+M\+U/edit?usp=sharing}
+
+\#\# Standard install via command-\/line 
+\begin{DoxyCode}
+1 git clone --recursive https://github.com/zzimits/808XMidterm
+2 cd <path to repository>
+3 mkdir build
+4 cd build
+5 cmake ..
+6 make
+7 Run tests: ./test/cpp-test
+8 Run program: ./app/shell-app
+\end{DoxyCode}
+
+
+\#\# Building for code coverage (for assignments beginning in Week 4) 
+\begin{DoxyCode}
+1 sudo apt-get install lcov
+2 cmake -D COVERAGE=ON -D CMAKE\_BUILD\_TYPE=Debug ../
+3 make
+4 make code\_coverage
+\end{DoxyCode}
+ This generates a index.\+html page in the build/coverage sub-\/directory that can be viewed locally in a web browser.
+
+\subsection*{Working with Eclipse I\+DE}
+
+\subsection*{Installation}
+
+In your Eclipse workspace directory (or create a new one), checkout the repo (and submodules) 
+\begin{DoxyCode}
+1 mkdir -p ~/workspace
+2 cd ~/workspace
+3 git clone --recursive https://github.com/zzimits/808XMidterm
+\end{DoxyCode}
+
+
+In your work directory, use cmake to create an Eclipse project for an \mbox{[}out-\/of-\/source build\mbox{]} of cpp-\/boilerplate
+
+
+\begin{DoxyCode}
+1 cd ~/workspace
+2 mkdir -p boilerplate-eclipse
+3 cd boilerplate-eclipse
+4 cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE\_BUILD\_TYPE=Debug -D CMAKE\_ECLIPSE\_VERSION=4.7.0 -D
+       CMAKE\_CXX\_COMPILER\_ARG1=-std=c++14 ../808XMidterm/
+\end{DoxyCode}
+
+
+\subsection*{Import}
+
+Open Eclipse, go to File -\/$>$ Import -\/$>$ General -\/$>$ Existing Projects into Workspace -\/$>$ Select \char`\"{}808\+X\+Midterm\char`\"{} directory created previously as root directory -\/$>$ Finish
+
+\section*{Edit}
+
+Source files may be edited under the \char`\"{}\mbox{[}\+Source Directory\mbox{]}\char`\"{} label in the Project Explorer.
+
+\subsection*{Build}
+
+To build the project, in Eclipse, unfold boilerplate-\/eclipse project in Project Explorer, unfold Build Targets, double click on \char`\"{}all\char`\"{} to build all projects.
+
+\subsection*{Run}
+
+
+\begin{DoxyEnumerate}
+\item In Eclipse, right click on the boilerplate-\/eclipse in Project Explorer, select Run As -\/$>$ Local C/\+C++ Application
+\item Choose the binaries to run (e.\+g. shell-\/app, cpp-\/test for unit testing)
+\end{DoxyEnumerate}
+
+\subsection*{Debug}
+
+
+\begin{DoxyEnumerate}
+\item Set breakpoint in source file (i.\+e. double click in the left margin on the line you want the program to break).
+\item In Eclipse, right click on the boilerplate-\/eclipse in Project Explorer, select Debug As -\/$>$ Local C/\+C++ Application, choose the binaries to run (e.\+g. shell-\/app).
+\item If prompt to \char`\"{}\+Confirm Perspective Switch\char`\"{}, select yes.
+\item Program will break at the breakpoint you set.
+\item Press Step Into (F5), Step Over (F6), Step Return (F7) to step/debug your program.
+\item Right click on the variable in editor to add watch expression to watch the variable in debugger window.
+\item Press Terminate icon to terminate debugging and press C/\+C++ icon to switch back to C/\+C++ perspetive view (or Windows-\/$>$Perspective-\/$>$Open Perspective-\/$>$C/\+C++).
+\end{DoxyEnumerate}
+
+\subsection*{Plugins}
+
+
+\begin{DoxyItemize}
+\item Cpp\+Ch\+Eclipse
+
+To install and run cppcheck in Eclipse
+\begin{DoxyEnumerate}
+\item In Eclipse, go to Window -\/$>$ Preferences -\/$>$ C/\+C++ -\/$>$ cppcheclipse. Set cppcheck binary path to \char`\"{}/usr/bin/cppcheck\char`\"{}.
+\item To run C\+P\+P\+Check on a project, right click on the project name in the Project Explorer and choose cppcheck -\/$>$ Run cppcheck.
+\end{DoxyEnumerate}
+\item Google C++ Sytle
+
+To include and use Google C++ Style formatter in Eclipse
+\begin{DoxyEnumerate}
+\item In Eclipse, go to Window -\/$>$ Preferences -\/$>$ C/\+C++ -\/$>$ Code Style -\/$>$ Formatter. Import \href{https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-cpp-google-style.xml}{\tt eclipse-\/cpp-\/google-\/style} and apply.
+\item To use Google C++ style formatter, right click on the source code or folder in Project Explorer and choose Source -\/$>$ Format
+\end{DoxyEnumerate}
+\item Git
+
+It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project. If you\textquotesingle{}re interested in this, try it out yourself and contact me on Canvas.
+\end{DoxyItemize}
+
+\subsection*{License}
+
+This software is licensed under the M\+IT license. 
