@@ -6,7 +6,11 @@
 
 ## Overview
 
-Controller design for a three wheeled robot. The controller takes in a desired heading and a current heading and outputs the steering angle and rear wheel velocities necessary to move into the new orientation. 
+Controller design for a three wheeled robot. The controller takes in a desired heading and a current heading and outputs the steering angle and rear wheel velocities necessary to move into the new orientation. A figure for the robot can be seen below. The dimensions for wheel base track width and wheel diameter can be in any dimension without effecting the code as long as they are all the same unit and the velocity is given as the unit over seconds. For example if they are in inches then velocity should be given as inches per second. The wheel speeds are in terms of revolutions per second. The orientation is represented by an degrees from 0 to 360.
+
+The robot is initilized as a member of the vehicle class which takes a wheel diameter, steering angle constrain, track width, and wheel base as constructor inputs. As part of the constructor an instance of the controller class is created for the robot with the same inputs for its constructor. The program then asks the user for a desired velocity and orientation. The program then enters a while loop until the desired orientation and velocity are reached. In the loop the function continues to call the update function for the robot. The update function initially calls the compute function of the controller class to update the wheel speeds and steering angle. The first step of this process is to adjust the vehicle speed based on the acceleration factor. Because there are no specificiations for the motors or any geartrains that may be present on the robot the acceleration has been modeled as a scalar that is added or subtracted to the current velocity to reach the desired velocity. After a new velocity has been calculated the controller looks at the difference between the desired orientation and the current orientation to decide on a steering angle. Once a steering angle is deterined the turning radius is calculated and the individual wheelspeeds are calculated to ensure that there is no wheel spin on either or the wheels. At this point the compute function finishes and returns the steering angle. Next the vehicle updates its current velocity and then integrates the velocity to find a distance travelled along the path to find the change in orientation. The new values will be tested against the loop conditions and either the vehicle will rerun the update function or the program will end.
+
+Because of the way steering angle is calculated the vehicle is never able to reach zero steady state error. As the delta between current orientation and desired orientation decreases so does the steering angle in turn creating a larger turing radius. To eliminate this error a control agorithm such as PID could be added to account for this. 
 
 ## Product Backlog
 https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc-MU/edit?usp=sharing
@@ -75,56 +79,12 @@ select Run As -> Local C/C++ Application
 2. Choose the binaries to run (e.g. shell-app, cpp-test for unit testing)
 
 
-## Debug
+## Doxygen
 
+sudo apt-get install doxygen
+cd <path to repository>
+doxygen ./docs/Doxyfile
 
-1. Set breakpoint in source file (i.e. double click in the left margin on the line you want 
-the program to break).
-
-2. In Eclipse, right click on the boilerplate-eclipse in Project Explorer, select Debug As -> 
-Local C/C++ Application, choose the binaries to run (e.g. shell-app).
-
-3. If prompt to "Confirm Perspective Switch", select yes.
-
-4. Program will break at the breakpoint you set.
-
-5. Press Step Into (F5), Step Over (F6), Step Return (F7) to step/debug your program.
-
-6. Right click on the variable in editor to add watch expression to watch the variable in 
-debugger window.
-
-7. Press Terminate icon to terminate debugging and press C/C++ icon to switch back to C/C++ 
-perspetive view (or Windows->Perspective->Open Perspective->C/C++).
-
-
-## Plugins
-
-- CppChEclipse
-
-    To install and run cppcheck in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> cppcheclipse.
-    Set cppcheck binary path to "/usr/bin/cppcheck".
-
-    2. To run CPPCheck on a project, right click on the project name in the Project Explorer 
-    and choose cppcheck -> Run cppcheck.
-
-
-- Google C++ Sytle
-
-    To include and use Google C++ Style formatter in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> Code Style -> Formatter. 
-    Import [eclipse-cpp-google-style][reference-id-for-eclipse-cpp-google-style] and apply.
-
-    2. To use Google C++ style formatter, right click on the source code or folder in 
-    Project Explorer and choose Source -> Format
-
-[reference-id-for-eclipse-cpp-google-style]: https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-cpp-google-style.xml
-
-- Git
-
-    It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project. If you're interested in this, try it out yourself and contact me on Canvas.
 
 ## License
 
