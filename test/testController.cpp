@@ -1,7 +1,7 @@
 /**
  * @file       test.cpp
  * @author     Niket Shah Zachary Zimits
- * @copyright  GNU Public License
+ * @copyright  2018 GNU Public License
  * @brief      Defines test cases for class Controller's
  *             member functions.
  */
@@ -19,13 +19,12 @@ TEST(calcVehicleSpeed, differenceOfTwoSpeeds) {
   Controller pid(30, 4, 4, 4);
   ASSERT_DOUBLE_EQ(pid.calculateVehicleSpeed(15, 25), 16.1);
   ASSERT_DOUBLE_EQ(pid.calculateVehicleSpeed(25, 15), 23.9);
-  ASSERT_DOUBLE_EQ(pid.calculateVehicleSpeed(25,25.5),25.5);
+  ASSERT_DOUBLE_EQ(pid.calculateVehicleSpeed(25, 25.5), 25.5);
 }
 
 TEST(calcWheelSpeedRatio, getRadiusRatio) {
   Controller pid(30, 4, 4, 4);
   ASSERT_DOUBLE_EQ(pid.calculateWheelSpeedRatio(), 1);
-
 }
 
 TEST(getVehicleSpeed, retrieveVehicleSpeed) {
@@ -41,14 +40,11 @@ TEST(getBothWheelSpeeds, retrieveLeftRightWheelSpeed) {
   ASSERT_DOUBLE_EQ(pid.getLeftWheelSpeed(), 4.025);
   ASSERT_DOUBLE_EQ(pid.getRightWheelSpeed(), 4.025);
   ASSERT_DOUBLE_EQ(pid.getTurningRadius(), 0);
-
 }
 
 TEST(compute, getSteeringAngleForGivenOrientations) {
   Controller pid(30, 4, 4, 4);
   ASSERT_DOUBLE_EQ(pid.calculateSteeringAngle(0, 90), 30);
   ASSERT_DOUBLE_EQ(pid.getSteeringAngle(), 30);
-
-
 }
 

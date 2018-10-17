@@ -55,7 +55,7 @@ cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLI
 ## Import
 
 Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
-Select "808XMidterm" directory created previously as root directory -> Finish
+Select "boilerplate-eclipse" directory created previously as root directory -> Finish
 
 # Edit
 

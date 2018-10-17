@@ -21,7 +21,7 @@ class Vehicle {
  private:
   double wheelDiameter;/*!<diameter of the wheels  */
   double dTime = 0.05;/*!< Time step for controller inputs */
-  double steeringAngleConstraint;/*!<The steering angle constraint restricting the motion  */
+  double steeringAngleConstraint;/*!< For restricting the motion of steering */
   double trackWidth;/*!<The distance between the two back wheels  */
   double wheelBase;/*!<The length between the front and the back wheels  */
   double currentVelocity = 1;/*!<The current velocity of the vehicle  */

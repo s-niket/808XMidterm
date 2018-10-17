@@ -1,6 +1,6 @@
 /**
  * @file Vehicle.hpp
- * @author Niket Shah
+ * @author Niket Shah Zachary Zimits
  * @copyright 2018 Niket Shah Zachary Zimits
  * @brief Implementation of header for Vehicle class
  */
@@ -18,8 +18,8 @@
  */
 
 Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
-                 double wheelB) : pid(.1, .1, .1, steerAngleConstraint, wheelD, trackW,
-               		  wheelB) {
+                 double wheelB)
+    : pid(steerAngleConstraint, wheelD, trackW, wheelB) {
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
@@ -52,9 +52,6 @@ double Vehicle::setVelocity(double desiredVelo) {
 /**
  * @brief                Function to update the orientation of
  *                       the vehicle to a desired value
- * @param turnRadius     Defines the radius to execute the turn of type double
- * @param steeringAngle  Defines the steering angle to execute
- *                       the turn of type double
  * @return currentOrientation  Returns the current orientation of the vehicle
  *                             after the turn of type double
  */
@@ -63,14 +60,15 @@ double Vehicle::updateOrientation() {
   double orientation;
   double deltaOrientation;
   double distanceTraveled = currentVelocity * dTime;
-  if(pid.getTurningRadius()==0)
-	  deltaOrientation = 0;
+  if (pid.getTurningRadius() == 0)
+    deltaOrientation = 0;
   else
-	  deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
+    deltaOrientation = (distanceTraveled * 360)
+        / (2 * M_PI * pid.getTurningRadius());
   if (pid.getSteeringAngle() > 0)
     orientation = currentOrientation + deltaOrientation;
   else
-	  orientation = currentOrientation - deltaOrientation;
+    orientation = currentOrientation - deltaOrientation;
   if (orientation >= 360)
     currentOrientation = orientation - 360;
   else if (orientation < 0)
@@ -84,7 +82,7 @@ double Vehicle::updateOrientation() {
  *                       the vehicle to a desired value
  * @param newVelocity    Defines the desired velocity of type double
  * @return currentVelocity  Returns the current velocity of the
- *                          vehicle after the updation
+ *                          vehicle after the update
  */
 double Vehicle::updateVelocity() {
   currentVelocity = pid.getVehicleSpeed();
@@ -96,12 +94,12 @@ double Vehicle::updateVelocity() {
  *                       functions.
  * @return currentVelocity  Returns the current orientation
  */
-double Vehicle::update(){
-	pid.compute(currentOrientation, desiredOrientation,
+double Vehicle::update() {
+  pid.compute(currentOrientation, desiredOrientation,
             currentVelocity, desiredVelocity);
-	updateVelocity();
-	updateOrientation();
-	return 0;
+  updateVelocity();
+  updateOrientation();
+  return currentOrientation;
 }
 
 /**

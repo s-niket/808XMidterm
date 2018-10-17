@@ -1,7 +1,7 @@
 /**
  * @file       test.cpp
  * @author     Niket Shah Zachary Zimits
- * @copyright  GNU Public License
+ * @copyright  2018 GNU Public License
  * @brief      Defines test cases for class Vehicle's
  *             member functions.
  */
@@ -37,7 +37,7 @@ TEST(updateOrientation, updateCurrentOrientation) {
 
 TEST(updateVelocity, retrieveUpdatedVelocity) {
   Vehicle tricycle(4, 30, 2, 1);
-  EXPECT_EQ(tricycle.updateVelocity(10), 10);
+  EXPECT_EQ(tricycle.updateVelocity(), 0);
 }
 
 TEST(getVelocity, retriveVelocity) {

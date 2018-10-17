@@ -18,23 +18,25 @@ int main() {
   double wheelDiameter = 2;
   double trackWidth = 4;
   double wheelBase = 4;
-  double desiredOrientation = 90;
-  double desiredVelocity = 10;
+  double desiredOrientation;
+  double desiredVelocity;
   Vehicle tricycle(wheelDiameter, steeringAngleConstraint, trackWidth,
                    wheelBase);
+  std::cout << "Please enter the desired orientation (0 to 360 degrees): "
+            << std::endl;
+  std::cin >> desiredOrientation;
+  std::cout << "Please enter the desired position: ";
+  std::cin >> desiredVelocity;
   tricycle.setVelocity(desiredVelocity);
   tricycle.setOrientation(desiredOrientation);
-  Controller pid(steeringAngleConstraint, wheelDiameter, trackWidth,
-                 wheelBase);
-
-  while ( fabs(tricycle.getOrientation() - desiredOrientation)> 1 || fabs(tricycle.getVelocity() - desiredVelocity) > .5) {
+  while (fabs(tricycle.getOrientation() - desiredOrientation) > 1
+      || fabs(tricycle.getVelocity() - desiredVelocity) > .5) {
     tricycle.update();
-    std::cout << tricycle.getOrientation() << " " << tricycle.getVelocity()<<"\n";
+    std::cout << "Current Orientation: " << tricycle.getOrientation()
+              << " Current Velocity: " << tricycle.getVelocity() << "\n";
     }
 
-std::cout<<tricycle.getOrientation()<<" "<<tricycle.getVelocity();
 
 
-	return 0;
-
+  return 0;
 }

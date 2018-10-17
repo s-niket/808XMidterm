@@ -1,6 +1,6 @@
 /**
  * @file Controller.hpp
- * @author Niket Shah
+ * @author Niket Shah Zachary Zimits
  * @copyright 2018 Niket Shah
  * @brief Header for Controller class
  */
@@ -51,17 +51,6 @@ class Controller {
   double dTime = 0;
 
  public:
-  /*
-   * @brief Function to calculate error in orientation
-   * and velocity
-   */
-  double calculateError(double initial, double desired);
-
-  /*
-   * @brief Implement PID controller for the given values
-   */
-  double implementPID();
-
   /*
    * @brief Calculate steering angle to execute the turn
    */
