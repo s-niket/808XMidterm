@@ -99,7 +99,9 @@ select Run As -> Local C/C++ Application
 ## Doxygen
 
 sudo apt-get install doxygen
+
 cd <path to repository>
+  
 doxygen ./docs/Doxyfile
 
 
