@@ -13,7 +13,7 @@ https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/zzimits/808XMidterm
+git clone --recursive https://github.com/s-niket/808XMidterm
 cd <path to repository>
 mkdir build
 cd build
@@ -40,7 +40,7 @@ In your Eclipse workspace directory (or create a new one), checkout the repo (an
 ```
 mkdir -p ~/workspace
 cd ~/workspace
-git clone --recursive https://github.com/zzimits/808XMidterm
+git clone --recursive https://github.com/s-niket/808XMidterm
 ```
 
 In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
