@@ -22,18 +22,22 @@ int main() {
   double desiredVelocity;
   Vehicle tricycle(wheelDiameter, steeringAngleConstraint, trackWidth,
                    wheelBase);
-  std::cout<<"Please enter the desired orientation: ";
-  std::cin>>desiredOrientation;
-  std::cout<<"Please enter the desired position: ";
-  std::cin>>desiredVelocity;
+  std::cout << "Please enter the desired orientation (0 to 360 degrees): "
+            << std::endl;
+  std::cin >> desiredOrientation;
+  std::cout << "Please enter the desired position: ";
+  std::cin >> desiredVelocity;
   tricycle.setVelocity(desiredVelocity);
   tricycle.setOrientation(desiredOrientation);
-  while ( fabs(tricycle.getOrientation() - desiredOrientation)> 1 || fabs(tricycle.getVelocity() - desiredVelocity) > .5) {
+  while (fabs(tricycle.getOrientation() - desiredOrientation) > 1
+      || fabs(tricycle.getVelocity() - desiredVelocity) > .5) {
     tricycle.update();
-    std::cout << "Current Orientation: "<<tricycle.getOrientation() << " Current Velocity: " << tricycle.getVelocity()<<"\n";
+    std::cout << "Current Orientation: " << tricycle.getOrientation()
+              << " Current Velocity: " << tricycle.getVelocity() << "\n";
     }
 
 
-
+ std::cout << "You have achieved your desired orientation and velocity!"
+            << std::endl;
   return 0;
 }

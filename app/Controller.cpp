@@ -1,6 +1,6 @@
 /**
  * @file Controller.hpp
- * @author Niket Shah
+ * @author Niket Shah Zachar Zimits
  * @copyright 2018 Niket Shah Zachary Zimits
  * @brief Implementation of header for Controller class
  */

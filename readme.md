@@ -1,8 +1,8 @@
 # C++ Boilerplate
-[![Build Status](https://travis-ci.com/zzimits/808XMidterm.svg?branch=master)](https://travis-ci.com/zzimits/808XMidterm)
-[![Coverage Status](https://coveralls.io/repos/github/zzimits/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/zzimits/808XMidterm?branch=master)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
----
+[![Build Status](https://travis-ci.com/s-niket/808XMidterm.svg?branch=master)](https://travis-ci.com/s-niket/808XMidterm)
+[![Coverage Status](https://coveralls.io/repos/github/s-niket/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/s-niket/808XMidterm?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+
 
 ## Overview
 
@@ -34,7 +34,7 @@ Navigator: Niket Shah
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/zzimits/808XMidterm
+git clone --recursive https://github.com/s-niket/808XMidterm
 cd <path to repository>
 mkdir build
 cd build
@@ -61,7 +61,7 @@ In your Eclipse workspace directory (or create a new one), checkout the repo (an
 ```
 mkdir -p ~/workspace
 cd ~/workspace
-git clone --recursive https://github.com/zzimits/808XMidterm
+git clone --recursive https://github.com/s-niket/808XMidterm
 ```
 
 In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
@@ -76,7 +76,7 @@ cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLI
 ## Import
 
 Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
-Select "808XMidterm" directory created previously as root directory -> Finish
+Select "boilerplate-eclipse" directory created previously as root directory -> Finish
 
 # Edit
 

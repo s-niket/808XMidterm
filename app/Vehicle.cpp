@@ -1,6 +1,6 @@
 /**
  * @file Vehicle.hpp
- * @author Niket Shah
+ * @author Niket Shah Zachary Zimits
  * @copyright 2018 Niket Shah Zachary Zimits
  * @brief Implementation of header for Vehicle class
  */
@@ -18,8 +18,8 @@
  */
 
 Vehicle::Vehicle(double wheelD, double steerAngleConstraint, double trackW,
-                 double wheelB) : pid(steerAngleConstraint, wheelD, trackW,
-               		  wheelB) {
+                 double wheelB)
+    : pid(steerAngleConstraint, wheelD, trackW, wheelB) {
   wheelDiameter = wheelD;
   steeringAngleConstraint = steerAngleConstraint;
   trackWidth = trackW;
@@ -60,14 +60,15 @@ double Vehicle::updateOrientation() {
   double orientation;
   double deltaOrientation;
   double distanceTraveled = currentVelocity * dTime;
-  if(pid.getTurningRadius()==0)
-	  deltaOrientation = 0;
+  if (pid.getTurningRadius() == 0)
+    deltaOrientation = 0;
   else
-	  deltaOrientation = (distanceTraveled * 360) / (2 * M_PI * pid.getTurningRadius());
+    deltaOrientation = (distanceTraveled * 360)
+        / (2 * M_PI * pid.getTurningRadius());
   if (pid.getSteeringAngle() > 0)
     orientation = currentOrientation + deltaOrientation;
   else
-	  orientation = currentOrientation - deltaOrientation;
+    orientation = currentOrientation - deltaOrientation;
   if (orientation >= 360)
     currentOrientation = orientation - 360;
   else if (orientation < 0)
@@ -93,12 +94,12 @@ double Vehicle::updateVelocity() {
  *                       functions.
  * @return currentVelocity  Returns the current orientation
  */
-double Vehicle::update(){
-	pid.compute(currentOrientation, desiredOrientation,
+double Vehicle::update() {
+  pid.compute(currentOrientation, desiredOrientation,
             currentVelocity, desiredVelocity);
-	updateVelocity();
-	updateOrientation();
-	return currentOrientation;
+  updateVelocity();
+  updateOrientation();
+  return currentOrientation;
 }
 
 /**
