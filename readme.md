@@ -13,13 +13,13 @@ The robot is initilized as a member of the vehicle class which takes a wheel dia
 Because of the way steering angle is calculated the vehicle is never able to reach zero steady state error. As the delta between current orientation and desired orientation decreases so does the steering angle in turn creating a larger turing radius. To eliminate this error a control agorithm such as PID could be added to account for this. After each update of the vehicle the program prints the current orientation and velocity. The first few lines of input and output are shown below.
 
 Please enter the desired orientation: 45
-Please enter the desired velocity: 5
-Current Orientation: 1.50401 Current Velocity: 2.1
-Current Orientation: 3.64118 Current Velocity: 3.2
-Current Orientation: 6.31828 Current Velocity: 4.3
-Current Orientation: 9.11605 Current Velocity: 5
-Current Orientation: 11.6235 Current Velocity: 5
-Current Orientation: 13.949 Current Velocity: 5
+Please enter the desired velocity: 5 <br />
+Current Orientation: 1.50401 Current Velocity: 2.1 <br />
+Current Orientation: 3.64118 Current Velocity: 3.2 <br />
+Current Orientation: 6.31828 Current Velocity: 4.3 <br />
+Current Orientation: 9.11605 Current Velocity: 5 <br />
+Current Orientation: 11.6235 Current Velocity: 5 <br />
+Current Orientation: 13.949 Current Velocity: 5 <br />
 
 ## Product Backlog
 https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc-MU/edit?usp=sharing
@@ -102,7 +102,7 @@ sudo apt-get install doxygen
 
 cd <path to repository>
   
-doxygen ./docs/Doxyfile
+doxygen ./path/to/documents/<Doxyfile>
 
 
 ## License
