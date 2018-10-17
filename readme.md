@@ -10,27 +10,28 @@ Controller design for a three wheeled robot. The controller takes in a desired h
 
 The robot is initilized as a member of the vehicle class which takes a wheel diameter, steering angle constrain, track width, and wheel base as constructor inputs. As part of the constructor an instance of the controller class is created for the robot with the same inputs for its constructor. The program then asks the user for a desired velocity and orientation. The program then enters a while loop until the desired orientation and velocity are reached. In the loop the function continues to call the update function for the robot. The update function initially calls the compute function of the controller class to update the wheel speeds and steering angle. The first step of this process is to adjust the vehicle speed based on the acceleration factor. Because there are no specificiations for the motors or any geartrains that may be present on the robot the acceleration has been modeled as a scalar that is added or subtracted to the current velocity to reach the desired velocity. After a new velocity has been calculated the controller looks at the difference between the desired orientation and the current orientation to decide on a steering angle. Once a steering angle is deterined the turning radius is calculated and the individual wheelspeeds are calculated to ensure that there is no wheel spin on either or the wheels. At this point the compute function finishes and returns the steering angle. Next the vehicle updates its current velocity and then integrates the velocity to find a distance travelled along the path to find the change in orientation. The new values will be tested against the loop conditions and either the vehicle will rerun the update function or the program will end.
 
-Because of the way steering angle is calculated the vehicle is never able to reach zero steady state error. As the delta between current orientation and desired orientation decreases so does the steering angle in turn creating a larger turing radius. To eliminate this error a control agorithm such as PID could be added to account for this. After each update of the vehicle the program prints the current orientation and velocity. The first few lines of input and output are shown below.
+Because of the way steering angle is calculated the vehicle is never able to reach zero steady state error. As the delta between current orientation and desired orientation decreases so does the steering angle in turn creating a larger turing radius. To eliminate this error a control agorithm such as PID could be added to account for this. After each update of the vehicle the program prints the current orientation and velocity. The demo of the code is shown below.
 
-Please enter the desired orientation: 45
-Please enter the desired velocity: 5
-Current Orientation: 1.50401 Current Velocity: 2.1
-Current Orientation: 3.64118 Current Velocity: 3.2
-Current Orientation: 6.31828 Current Velocity: 4.3
-Current Orientation: 9.11605 Current Velocity: 5
-Current Orientation: 11.6235 Current Velocity: 5
-Current Orientation: 13.949 Current Velocity: 5
+Please enter the desired orientation: 14
+Please enter the desired velocity: 5 <br />
+Current Orientation: 1.50401 Current Velocity: 2.1 <br />
+Current Orientation: 3.64118 Current Velocity: 3.2 <br />
+Current Orientation: 6.31828 Current Velocity: 4.3 <br />
+Current Orientation: 9.11605 Current Velocity: 5 <br />
+Current Orientation: 11.6235 Current Velocity: 5 <br />
+Current Orientation: 13.949 Current Velocity: 5 <br />
+The desired orientation and velocity is achieved!
 
 ## Product Backlog
 https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc-MU/edit?usp=sharing
 
 Week 1:
-Driver: Niket Shah
-Naviagtor: Zachary Zimits
+Driver: Niket Shah (GitHub username: s-niket)
+Naviagtor: Zachary Zimits (Github username: zzimits)
 
 Week 2:
-Driver: Zachary Zimits
-Navigator: Niket Shah
+Driver: Zachary Zimits (Github username: zzimits)
+Navigator: Niket Shah (GitHub username: s-niket)
 
 ## Standard install via command-line
 ```
@@ -95,15 +96,25 @@ select Run As -> Local C/C++ Application
 
 2. Choose the binaries to run (e.g. shell-app, cpp-test for unit testing)
 
+## Cppcheck
+```
+cppcheck */*.cpp
+cppcheck */*.hpp
+```
+## Cpplint
+
+```
+cpplint */*.cpp
+cpplint */*.hpp
+```
 
 ## Doxygen
-
+```
 sudo apt-get install doxygen
-
 cd <path to repository>
-  
-doxygen ./docs/Doxyfile
-
+doxygen -g <file-name>
+doxygen <file-name>
+```
 
 ## License
 
