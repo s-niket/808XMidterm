@@ -1,0 +1,170 @@
+\hypertarget{classVehicle}{}\section{Vehicle Class Reference}
+\label{classVehicle}\index{Vehicle@{Vehicle}}
+
+
+Class \mbox{\hyperlink{classVehicle}{Vehicle}} Class defines vehicle attributes and member functions to update vehicle\textquotesingle{}s orientation and velocity to a desired value.  
+
+
+
+
+{\ttfamily \#include $<$Vehicle.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVehicle_a28e612a4fb57d620a4a6dd85befb287b}{Vehicle}} (double wheel\+Diameter, double steering\+Angle\+Constraint, double track\+Width, double wheel\+Base)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classVehicle}{Vehicle}} class. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVehicle_a865d9ec770da73501cb7b6ed75b2f9ca}{set\+Orientation}} (double desired\+Orient)
+\begin{DoxyCompactList}\small\item\em Function to set the orientation of the vehicle to a desired value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVehicle_ad8f9151a22348bbfe3ff6e6a3df98f78}{set\+Velocity}} (double desired\+Velo)
+\begin{DoxyCompactList}\small\item\em Function to set the velocity of the vehicle to a desired value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVehicle_aea71584dd54c085afb5c10250d393cd9}{update\+Orientation}} ()
+\begin{DoxyCompactList}\small\item\em Function to update the orientation of the vehicle to a desired value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVehicle_a6575495307173c35f263c09563d8ad4d}{update\+Velocity}} ()
+\begin{DoxyCompactList}\small\item\em Function to update the velocity of the vehicle to a desired value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVehicle_a4748e1fcd6fb7449ebdcf9982c4da71f}{update}} ()
+\begin{DoxyCompactList}\small\item\em Function to calculate the controller output then call the update velocity and orientation functions. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVehicle_a5244052aac95a5cf86572bfa19916415}{get\+Orientation}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the value of orientation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVehicle_a8a4a94bb5079a888ae499a94ec70d550}{get\+Velocity}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the value of orientation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \mbox{\hyperlink{classVehicle}{Vehicle}} Class defines vehicle attributes and member functions to update vehicle\textquotesingle{}s orientation and velocity to a desired value. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classVehicle_a28e612a4fb57d620a4a6dd85befb287b}\label{classVehicle_a28e612a4fb57d620a4a6dd85befb287b}} 
+\index{Vehicle@{Vehicle}!Vehicle@{Vehicle}}
+\index{Vehicle@{Vehicle}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{Vehicle()}{Vehicle()}}
+{\footnotesize\ttfamily Vehicle\+::\+Vehicle (\begin{DoxyParamCaption}\item[{double}]{wheelD,  }\item[{double}]{steer\+Angle\+Constraint,  }\item[{double}]{trackW,  }\item[{double}]{wheelB }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classVehicle}{Vehicle}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wheelD} & Defines the wheel diameters of type double \\
+\hline
+{\em steer\+Angle\+Constraint} & Defines the steering angle constraint of type double \\
+\hline
+{\em trackW} & Defines the track-\/width of the vehicle of type double \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classVehicle_a5244052aac95a5cf86572bfa19916415}\label{classVehicle_a5244052aac95a5cf86572bfa19916415}} 
+\index{Vehicle@{Vehicle}!get\+Orientation@{get\+Orientation}}
+\index{get\+Orientation@{get\+Orientation}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{get\+Orientation()}{getOrientation()}}
+{\footnotesize\ttfamily double Vehicle\+::get\+Orientation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to get the value of orientation. 
+
+\begin{DoxyReturn}{Returns}
+current\+Orientation Returns the current orientation of the vehicle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVehicle_a8a4a94bb5079a888ae499a94ec70d550}\label{classVehicle_a8a4a94bb5079a888ae499a94ec70d550}} 
+\index{Vehicle@{Vehicle}!get\+Velocity@{get\+Velocity}}
+\index{get\+Velocity@{get\+Velocity}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{get\+Velocity()}{getVelocity()}}
+{\footnotesize\ttfamily double Vehicle\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to get the value of orientation. 
+
+\begin{DoxyReturn}{Returns}
+current\+Orientation Returns the current orientation of the vehicle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVehicle_a865d9ec770da73501cb7b6ed75b2f9ca}\label{classVehicle_a865d9ec770da73501cb7b6ed75b2f9ca}} 
+\index{Vehicle@{Vehicle}!set\+Orientation@{set\+Orientation}}
+\index{set\+Orientation@{set\+Orientation}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{set\+Orientation()}{setOrientation()}}
+{\footnotesize\ttfamily double Vehicle\+::set\+Orientation (\begin{DoxyParamCaption}\item[{double}]{desired\+Orient }\end{DoxyParamCaption})}
+
+
+
+Function to set the orientation of the vehicle to a desired value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em desired\+Orient} & Defines the desired orientation of type double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+desired\+Orientation Returns the desired orientation of the vehicle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVehicle_ad8f9151a22348bbfe3ff6e6a3df98f78}\label{classVehicle_ad8f9151a22348bbfe3ff6e6a3df98f78}} 
+\index{Vehicle@{Vehicle}!set\+Velocity@{set\+Velocity}}
+\index{set\+Velocity@{set\+Velocity}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{set\+Velocity()}{setVelocity()}}
+{\footnotesize\ttfamily double Vehicle\+::set\+Velocity (\begin{DoxyParamCaption}\item[{double}]{desired\+Velo }\end{DoxyParamCaption})}
+
+
+
+Function to set the velocity of the vehicle to a desired value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em desired\+Velo} & Defines the desired velocity of type double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+desired\+Velocity Returns the desired velocity of the vehicle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVehicle_a4748e1fcd6fb7449ebdcf9982c4da71f}\label{classVehicle_a4748e1fcd6fb7449ebdcf9982c4da71f}} 
+\index{Vehicle@{Vehicle}!update@{update}}
+\index{update@{update}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily double Vehicle\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to calculate the controller output then call the update velocity and orientation functions. 
+
+\begin{DoxyReturn}{Returns}
+current\+Velocity Returns the current orientation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVehicle_aea71584dd54c085afb5c10250d393cd9}\label{classVehicle_aea71584dd54c085afb5c10250d393cd9}} 
+\index{Vehicle@{Vehicle}!update\+Orientation@{update\+Orientation}}
+\index{update\+Orientation@{update\+Orientation}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{update\+Orientation()}{updateOrientation()}}
+{\footnotesize\ttfamily double Vehicle\+::update\+Orientation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to update the orientation of the vehicle to a desired value. 
+
+\begin{DoxyReturn}{Returns}
+current\+Orientation Returns the current orientation of the vehicle after the turn of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVehicle_a6575495307173c35f263c09563d8ad4d}\label{classVehicle_a6575495307173c35f263c09563d8ad4d}} 
+\index{Vehicle@{Vehicle}!update\+Velocity@{update\+Velocity}}
+\index{update\+Velocity@{update\+Velocity}!Vehicle@{Vehicle}}
+\subsubsection{\texorpdfstring{update\+Velocity()}{updateVelocity()}}
+{\footnotesize\ttfamily double Vehicle\+::update\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to update the velocity of the vehicle to a desired value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Velocity} & Defines the desired velocity of type double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+current\+Velocity Returns the current velocity of the vehicle after the update 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/niket/eclipse-\/workspace/808\+X\+Midterm/include/\mbox{\hyperlink{Vehicle_8hpp}{Vehicle.\+hpp}}\item 
+/home/niket/eclipse-\/workspace/808\+X\+Midterm/app/Vehicle.\+cpp\end{DoxyCompactItemize}
