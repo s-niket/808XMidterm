@@ -1,6 +1,6 @@
-# C++ Boilerplate
-[![Build Status](https://travis-ci.com/s-niket/808XMidterm.svg?branch=master)](https://travis-ci.com/s-niket/808XMidterm)
-[![Coverage Status](https://coveralls.io/repos/github/s-niket/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/s-niket/808XMidterm?branch=master)
+# 808XMidterm
+[![Build Status](https://travis-ci.com/zzimits/808XMidterm.svg?branch=master)](https://travis-ci.com/zzimits/808XMidterm)
+[![Coverage Status](https://coveralls.io/repos/github/zzimits/808XMidterm/badge.svg?branch=master)](https://coveralls.io/github/zzimits/808XMidterm?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -13,7 +13,7 @@ The robot is initilized as a member of the vehicle class which takes a wheel dia
 Because of the way steering angle is calculated the vehicle is never able to reach zero steady state error. As the delta between current orientation and desired orientation decreases so does the steering angle in turn creating a larger turing radius. To eliminate this error a control agorithm such as PID could be added to account for this. After each update of the vehicle the program prints the current orientation and velocity. The first few lines of input and output are shown below.
 
 Please enter the desired orientation: 45
-Please enter the desired position: 5
+Please enter the desired velocity: 5
 Current Orientation: 1.50401 Current Velocity: 2.1
 Current Orientation: 3.64118 Current Velocity: 3.2
 Current Orientation: 6.31828 Current Velocity: 4.3
