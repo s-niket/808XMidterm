@@ -1,0 +1,210 @@
+\hypertarget{classController}{}\section{Controller Class Reference}
+\label{classController}\index{Controller@{Controller}}
+
+
+Class \mbox{\hyperlink{classController}{Controller}} Class defines controller attributes and member functions to calculate error and get the contoller output for orientation and velocity.  
+
+
+
+
+{\ttfamily \#include $<$Controller.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classController_a9faf85b1601c9c20740cb31ce3a9f099}{calculate\+Steering\+Angle}} (double current\+Orientation, double desired\+Orientation)
+\begin{DoxyCompactList}\small\item\em Method to calculate steering angle for executing turn. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_a4c6ff34160fced40226456f39b97804f}{calculate\+Vehicle\+Speed}} (double current\+Velocity, double desired\+Velocity)
+\begin{DoxyCompactList}\small\item\em Method to calculate vehicle speed to set it to the desired value by introducing acceleration. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_a2505ab26434dd301abbcb32ba4f75f0a}{calculate\+Wheel\+Speed\+Ratio}} ()
+\begin{DoxyCompactList}\small\item\em Method to calculate vehicle\textquotesingle{}s wheel speed ratio to get the different wheel speeds. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_ae20b7417457e0be22da044b3ce4ecc3f}{get\+Vehicle\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Method to get vehicle speed. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_ad9d6fbcc6ba76e33050291ae2327e301}{get\+Left\+Wheel\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Method to get vehicle\textquotesingle{}s left wheel speed. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_ad50ec21787d1ac38c6ad8c8086384b22}{get\+Right\+Wheel\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Method to get vehicle\textquotesingle{}s right wheel speed. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_a30079abc08acf260716cf663070249ac}{get\+Turning\+Radius}} ()
+\begin{DoxyCompactList}\small\item\em Method to get vehicle\textquotesingle{}s turning radius for executing the turn. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_a63b99bb3559bd410951915a4795b154c}{get\+Steering\+Angle}} ()
+\begin{DoxyCompactList}\small\item\em Method to get steering angle for executing the turn. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classController_a1bd6d3476317e67b44a34e3c3f68e649}{Controller}} (double steering\+Constraint, double wheel\+Diameter, double track\+Width, double wheel\+Base)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classController}{Controller}} class. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classController_af192a4eff58739a3e7e206adfb150c2d}{compute}} (double current\+Orientation, double desired\+Orientation, double current\+Velocity, double desired\+Velocity)
+\begin{DoxyCompactList}\small\item\em Method to compute the vehicle\textquotesingle{}s steering angle given a desired orientation and velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \mbox{\hyperlink{classController}{Controller}} Class defines controller attributes and member functions to calculate error and get the contoller output for orientation and velocity. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classController_a1bd6d3476317e67b44a34e3c3f68e649}\label{classController_a1bd6d3476317e67b44a34e3c3f68e649}} 
+\index{Controller@{Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Controller()}{Controller()}}
+{\footnotesize\ttfamily Controller\+::\+Controller (\begin{DoxyParamCaption}\item[{double}]{steering\+Limit,  }\item[{double}]{wheel\+Diameter,  }\item[{double}]{width,  }\item[{double}]{base }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classController}{Controller}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gainP} & Proportional gain of type double \\
+\hline
+{\em gainI} & Integral gain of type double \\
+\hline
+{\em gainD} & Derivative gain of type double \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classController_a9faf85b1601c9c20740cb31ce3a9f099}\label{classController_a9faf85b1601c9c20740cb31ce3a9f099}} 
+\index{Controller@{Controller}!calculate\+Steering\+Angle@{calculate\+Steering\+Angle}}
+\index{calculate\+Steering\+Angle@{calculate\+Steering\+Angle}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{calculate\+Steering\+Angle()}{calculateSteeringAngle()}}
+{\footnotesize\ttfamily double Controller\+::calculate\+Steering\+Angle (\begin{DoxyParamCaption}\item[{double}]{current\+Orientation,  }\item[{double}]{desired\+Orientation }\end{DoxyParamCaption})}
+
+
+
+Method to calculate steering angle for executing turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Orientation} & Initial value of orientation of type double \\
+\hline
+{\em desired\+Orientation} & Final value of orientation of type double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+steering\+Angle Value of steering angle after introducing steering constraint of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_a4c6ff34160fced40226456f39b97804f}\label{classController_a4c6ff34160fced40226456f39b97804f}} 
+\index{Controller@{Controller}!calculate\+Vehicle\+Speed@{calculate\+Vehicle\+Speed}}
+\index{calculate\+Vehicle\+Speed@{calculate\+Vehicle\+Speed}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{calculate\+Vehicle\+Speed()}{calculateVehicleSpeed()}}
+{\footnotesize\ttfamily double Controller\+::calculate\+Vehicle\+Speed (\begin{DoxyParamCaption}\item[{double}]{current\+Velocity,  }\item[{double}]{desired\+Velocity }\end{DoxyParamCaption})}
+
+
+
+Method to calculate vehicle speed to set it to the desired value by introducing acceleration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Velocity} & Initial value of velocity of type double \\
+\hline
+{\em desired\+Velocity} & Final value of velocity of type double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vehicle\+Speed Value of vehicle speed after acceleration of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_a2505ab26434dd301abbcb32ba4f75f0a}\label{classController_a2505ab26434dd301abbcb32ba4f75f0a}} 
+\index{Controller@{Controller}!calculate\+Wheel\+Speed\+Ratio@{calculate\+Wheel\+Speed\+Ratio}}
+\index{calculate\+Wheel\+Speed\+Ratio@{calculate\+Wheel\+Speed\+Ratio}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{calculate\+Wheel\+Speed\+Ratio()}{calculateWheelSpeedRatio()}}
+{\footnotesize\ttfamily double Controller\+::calculate\+Wheel\+Speed\+Ratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to calculate vehicle\textquotesingle{}s wheel speed ratio to get the different wheel speeds. 
+
+\begin{DoxyReturn}{Returns}
+radius\+Ratio Value of radius ratio of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_af192a4eff58739a3e7e206adfb150c2d}\label{classController_af192a4eff58739a3e7e206adfb150c2d}} 
+\index{Controller@{Controller}!compute@{compute}}
+\index{compute@{compute}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{compute()}{compute()}}
+{\footnotesize\ttfamily double Controller\+::compute (\begin{DoxyParamCaption}\item[{double}]{current\+Orientation,  }\item[{double}]{desired\+Orientation,  }\item[{double}]{current\+Velocity,  }\item[{double}]{desired\+Velocity }\end{DoxyParamCaption})}
+
+
+
+Method to compute the vehicle\textquotesingle{}s steering angle given a desired orientation and velocity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Orientation} & Initial value of orientation of type double \\
+\hline
+{\em desired\+Orientation} & Final value of orientation of type double \\
+\hline
+{\em current\+Velocity} & Initial value of velocity of type double \\
+\hline
+{\em desired\+Velocity} & Final value of velocity of type double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+steering\+Angle Value of steering angle required for the turn of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_ad9d6fbcc6ba76e33050291ae2327e301}\label{classController_ad9d6fbcc6ba76e33050291ae2327e301}} 
+\index{Controller@{Controller}!get\+Left\+Wheel\+Speed@{get\+Left\+Wheel\+Speed}}
+\index{get\+Left\+Wheel\+Speed@{get\+Left\+Wheel\+Speed}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{get\+Left\+Wheel\+Speed()}{getLeftWheelSpeed()}}
+{\footnotesize\ttfamily double Controller\+::get\+Left\+Wheel\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get vehicle\textquotesingle{}s left wheel speed. 
+
+\begin{DoxyReturn}{Returns}
+radius\+Ratio Value of left wheel speed of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_ad50ec21787d1ac38c6ad8c8086384b22}\label{classController_ad50ec21787d1ac38c6ad8c8086384b22}} 
+\index{Controller@{Controller}!get\+Right\+Wheel\+Speed@{get\+Right\+Wheel\+Speed}}
+\index{get\+Right\+Wheel\+Speed@{get\+Right\+Wheel\+Speed}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{get\+Right\+Wheel\+Speed()}{getRightWheelSpeed()}}
+{\footnotesize\ttfamily double Controller\+::get\+Right\+Wheel\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get vehicle\textquotesingle{}s right wheel speed. 
+
+\begin{DoxyReturn}{Returns}
+radius\+Ratio Value of right wheel speed of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_a63b99bb3559bd410951915a4795b154c}\label{classController_a63b99bb3559bd410951915a4795b154c}} 
+\index{Controller@{Controller}!get\+Steering\+Angle@{get\+Steering\+Angle}}
+\index{get\+Steering\+Angle@{get\+Steering\+Angle}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{get\+Steering\+Angle()}{getSteeringAngle()}}
+{\footnotesize\ttfamily double Controller\+::get\+Steering\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get steering angle for executing the turn. 
+
+\begin{DoxyReturn}{Returns}
+radius\+Ratio Value of steering angle of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_a30079abc08acf260716cf663070249ac}\label{classController_a30079abc08acf260716cf663070249ac}} 
+\index{Controller@{Controller}!get\+Turning\+Radius@{get\+Turning\+Radius}}
+\index{get\+Turning\+Radius@{get\+Turning\+Radius}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{get\+Turning\+Radius()}{getTurningRadius()}}
+{\footnotesize\ttfamily double Controller\+::get\+Turning\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get vehicle\textquotesingle{}s turning radius for executing the turn. 
+
+\begin{DoxyReturn}{Returns}
+radius\+Ratio Value of turning radius of type double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classController_ae20b7417457e0be22da044b3ce4ecc3f}\label{classController_ae20b7417457e0be22da044b3ce4ecc3f}} 
+\index{Controller@{Controller}!get\+Vehicle\+Speed@{get\+Vehicle\+Speed}}
+\index{get\+Vehicle\+Speed@{get\+Vehicle\+Speed}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{get\+Vehicle\+Speed()}{getVehicleSpeed()}}
+{\footnotesize\ttfamily double Controller\+::get\+Vehicle\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get vehicle speed. 
+
+\begin{DoxyReturn}{Returns}
+radius\+Ratio Value of vehicle speed of type double 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/niket/eclipse-\/workspace/808\+X\+Midterm/include/\mbox{\hyperlink{Controller_8hpp}{Controller.\+hpp}}\item 
+/home/niket/eclipse-\/workspace/808\+X\+Midterm/app/Controller.\+cpp\end{DoxyCompactItemize}
