@@ -30,6 +30,8 @@ class Vehicle {
   double desiredOrientation;/*!<The desired orientation of the vehicle  */
   Controller pid;/*!<Instance of the controller class  */
 
+
+
  public:
   /*
    * @brief Constructor of class Vehicle
@@ -71,6 +73,15 @@ class Vehicle {
    * @brief Destructor for class Vehicle
    */
   ~Vehicle();
+
+  // New method for GMock Testing
+
+  /*
+   * @brief Get controller gains of the vehicle
+   * @param double kp
+   * @return double kP
+   */
+  double getControllerGain(double kp);
 };
 
 

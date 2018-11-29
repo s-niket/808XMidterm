@@ -50,6 +50,10 @@ class Controller {
   // Difference in time intervals
   double dTime = 0;
 
+  // New attributes for GMock Testing
+  // Proportional Gain
+  double kp;
+
  public:
   /*
    * @brief Calculate steering angle to execute the turn
@@ -110,6 +114,23 @@ class Controller {
    *@brief Destructor for class Controller
    */
   ~Controller();
+
+  // New methods for GMock Testing
+
+  /*
+   * @brief Set proportional gain for the PID controller
+   * @param double _kp
+   * @return void
+   */
+  void setPgain(double _kp);
+
+  /*
+   * @brief Get proportional gain of the PID controller
+   * @param none
+   * @return double kp
+   */
+
+  double getPgain();
 };
 
 #endif  // INCLUDE_CONTROLLER_HPP_

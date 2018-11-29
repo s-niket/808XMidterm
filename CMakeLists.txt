@@ -11,7 +11,7 @@ if (COVERAGE)
     include(CodeCoverage)
     set(LCOV_REMOVE_EXTRA "'vendor/*'")
     setup_target_for_coverage(code_coverage test/cpp-test coverage)
-    set(COVERAGE_SRCS app/main.cpp app/Vehicle.cpp app/Controller.cpp include/Vehicle.hpp include/Controller.hpp)
+    set(COVERAGE_SRCS app/main.cpp app/Vehicle.cpp app/Controller.cpp include/Vehicle.hpp include/Controller.hpp include/MockController.h)
 
     SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
     SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")

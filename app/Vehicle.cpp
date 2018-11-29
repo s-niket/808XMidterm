@@ -123,3 +123,14 @@ double Vehicle::getVelocity() {
  */
 Vehicle::~Vehicle() {
 }
+
+// New method for GMock Testing
+
+/*
+ * @brief Set controller gains for the vehicle
+ * @param double kp
+ * @return double kP
+ */
+double Vehicle::getControllerGain(double kp) {
+  return kp;
+}

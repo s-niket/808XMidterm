@@ -21,6 +21,7 @@ Controller::Controller(double steeringLimit, double wheelDiameter, double width,
   wheelCircumference = wheelDiameter;
   trackWidth = width;
   wheelBase = base;
+  kp = 0;
 }
 
 
@@ -144,4 +145,25 @@ double Controller::compute(double currentOrientation, double desiredOrientation,
  * @brief Destructor for Vehicle class
  */
 Controller::~Controller() {
+}
+
+// New methods for GMock Testing
+
+/*
+ * @brief Set proportional gain for the PID controller
+ * @param double _kp
+ * @return void
+ */
+void Controller::setPgain(double _kp) {
+  kp = _kp;
+}
+
+/*
+ * @brief Get proportional gain of the PID controller
+ * @param none
+ * @return double kp
+ */
+
+double Controller::getPgain() {
+  return kp;
 }

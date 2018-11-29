@@ -7,6 +7,11 @@
  */
 #include <gtest/gtest.h>
 #include "Vehicle.hpp"
+#include "gmock/gmock.h"
+#include "MockController.h"
+
+using ::testing::AtLeast;
+
 /*
  * @brief Test for setOrientation()
  */
@@ -62,3 +67,13 @@ TEST(getOrientation, retriveOrientation) {
   Vehicle tricycle(4, 30, 2, 1);
   EXPECT_EQ(tricycle.getOrientation(), 0);
 }
+
+
+// GMock Testing
+
+TEST(getProportionalGain, MockTestForProportionalGain) {
+  MockController mockPID;
+  EXPECT_CALL(mockPID, mockPID.getPgain()).Times(Atleast(1));
+
+}
+
