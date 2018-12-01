@@ -6,7 +6,9 @@
 
 ## Overview
 
-Controller design for a three wheeled robot. The controller takes in a desired heading and a current heading and outputs the steering angle and rear wheel velocities necessary to move into the new orientation. A figure for the robot can be seen below. The dimensions for wheel base track width and wheel diameter can be in any dimension without effecting the code as long as they are all the same unit and the velocity is given as the unit over seconds. For example if they are in inches then velocity should be given as inches per second. The wheel speeds are in terms of revolutions per second. The orientation is represented by an degrees from 0 to 360.
+Controller design for a three wheeled robot. The controller takes in a desired heading and a current heading and outputs the steering angle and rear wheel velocities necessary to move into the new orientation. A figure for the robot can be seen below. The dimensions for wheel base track width and wheel diameter can be in any dimension without effecting the code as long as they are all the same unit and the velocity is given as the unit over seconds. For example if they are in inches then velocity should be given as inches per second. The wheel speeds are in terms of revolutions per second. The orientation is represented by an degrees from 0 to 360. 
+
+The code was developed by Niket Shah (GitHub: (https://github.com/s-niket)) and Zachary Zimits (GitHub: (https://github.com/zzimits)) using Test Driven Development. 
 
  ![](images/diagram.JPG "Figure 1: Robot Diagram")
 
@@ -29,15 +31,15 @@ https://docs.google.com/spreadsheets/d/1Py2qpyGfDeVT_eRLimAQFqMv2-7tjFeGuS7VBzTc
 
 Week 1:
 Driver: Niket Shah (GitHub username: s-niket)
-Naviagtor: Zachary Zimits (Github username: zzimits)
+Naviagtor: Zachary Zimits (GitHub username: zzimits)
 
 Week 2:
-Driver: Zachary Zimits (Github username: zzimits)
+Driver: Zachary Zimits (GitHub username: zzimits)
 Navigator: Niket Shah (GitHub username: s-niket)
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/s-niket/808XMidterm
+git clone --recursive https://github.com/s-niket/808XMidterm/tree/GMock_Extra_Credit.git
 cd <path to repository>
 mkdir build
 cd build
@@ -64,7 +66,7 @@ In your Eclipse workspace directory (or create a new one), checkout the repo (an
 ```
 mkdir -p ~/workspace
 cd ~/workspace
-git clone --recursive https://github.com/s-niket/808XMidterm
+git clone --recursive https://github.com/s-niket/808XMidterm/tree/GMock_Extra_Credit.git
 ```
 
 In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
@@ -121,3 +123,7 @@ doxygen <file-name>
 ## License
 
 This software is licensed under the MIT license.
+
+## Google Mock Testing
+
+To implement GMock testing (https://github.com/abseil/googletest/blob/master/googlemock/README.md), a new class was made named Dimensions. Class Vehicle uses method of class Dimension and thus unit testing cannot be performed by testing methods of each class individually. A mock class of class Dimensions was utilized for testing class Vehicle's methods. The object of the mock class was passed to the Vehicle class' object and the test cases were implemented. The dependencies needed for mock testing: Copy folder vendor/ (https://github.com/mlapin/libsdca/tree/master/vendor) into your repository and also make changes in the CMakeLists to add gmock dependencies. 
