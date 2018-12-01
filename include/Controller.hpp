@@ -1,4 +1,35 @@
 /**
+ * Copyright 2018, Niket Shah
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ * CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+/**
  * @file Controller.hpp
  * @author Niket Shah Zachary Zimits
  * @copyright 2018 Niket Shah
@@ -50,10 +81,6 @@ class Controller {
   // Difference in time intervals
   double dTime = 0;
 
-  // New attributes for GMock Testing
-  // Proportional Gain
-  double kp;
-
  public:
   /*
    * @brief Calculate steering angle to execute the turn
@@ -61,13 +88,10 @@ class Controller {
   double calculateSteeringAngle(double currentOrientation,
                                 double desiredOrientation);
 
-
   /*
    * @brief Calculate the total vehicle velocity
    */
   double calculateVehicleSpeed(double currentVelocity, double desiredVelocity);
-
-
 
   /*
    * @brief Calculate the wheel speed ratios for
@@ -100,8 +124,8 @@ class Controller {
   /*
    * @brief Constructor for Controller class
    */
-  Controller(double steeringConstraint,
-             double wheelDiameter, double trackWidth, double wheelBase);
+  Controller(double steeringConstraint, double wheelDiameter, double trackWidth,
+             double wheelBase);
 
   /*
    * @brief Function to compute the final orientation and
@@ -114,23 +138,5 @@ class Controller {
    *@brief Destructor for class Controller
    */
   ~Controller();
-
-  // New methods for GMock Testing
-
-  /*
-   * @brief Set proportional gain for the PID controller
-   * @param double _kp
-   * @return void
-   */
-  void setPgain(double _kp);
-
-  /*
-   * @brief Get proportional gain of the PID controller
-   * @param none
-   * @return double kp
-   */
-
-  double getPgain();
 };
-
 #endif  // INCLUDE_CONTROLLER_HPP_

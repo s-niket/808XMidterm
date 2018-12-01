@@ -1,4 +1,35 @@
 /**
+ * Copyright 2018, Niket Shah
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ * CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+/**
  * @file Controller.hpp
  * @author Niket Shah Zachar Zimits
  * @copyright 2018 Niket Shah Zachary Zimits
@@ -21,9 +52,7 @@ Controller::Controller(double steeringLimit, double wheelDiameter, double width,
   wheelCircumference = wheelDiameter;
   trackWidth = width;
   wheelBase = base;
-  kp = 0;
 }
-
 
 /**
  * @brief                Method to calculate steering angle for executing turn
@@ -57,11 +86,9 @@ double Controller::calculateVehicleSpeed(double currentVelocity,
       vehicleSpeed = desiredVelocity;
     else
       vehicleSpeed = acceleration + currentVelocity;
-  else
-    if (currentVelocity - acceleration < desiredVelocity) {
+  else if (currentVelocity - acceleration < desiredVelocity) {
     vehicleSpeed = desiredVelocity;
-  }
-    else {
+  } else {
     vehicleSpeed = currentVelocity - acceleration;
   }
 
@@ -74,7 +101,7 @@ double Controller::calculateVehicleSpeed(double currentVelocity,
  */
 double Controller::calculateWheelSpeedRatio() {
   double radiusRatio;
-  double rearSpeed = vehicleSpeed/wheelCircumference;
+  double rearSpeed = vehicleSpeed / wheelCircumference;
   if (steeringAngle != 0) {
     turningRadius = wheelBase / tan(abs(steeringAngle) * M_PI / 180);
     double leftRearRadius = turningRadius - (wheelBase / 2);
@@ -85,8 +112,8 @@ double Controller::calculateWheelSpeedRatio() {
       radiusRatio = rightRearRadius / leftRearRadius;
   } else
     radiusRatio = 1;
-  leftWheelSpeed = rearSpeed*radiusRatio;
-  rightWheelSpeed = rearSpeed/radiusRatio;
+  leftWheelSpeed = rearSpeed * radiusRatio;
+  rightWheelSpeed = rearSpeed / radiusRatio;
   return radiusRatio;
 }
 /**
@@ -147,23 +174,3 @@ double Controller::compute(double currentOrientation, double desiredOrientation,
 Controller::~Controller() {
 }
 
-// New methods for GMock Testing
-
-/*
- * @brief Set proportional gain for the PID controller
- * @param double _kp
- * @return void
- */
-void Controller::setPgain(double _kp) {
-  kp = _kp;
-}
-
-/*
- * @brief Get proportional gain of the PID controller
- * @param none
- * @return double kp
- */
-
-double Controller::getPgain() {
-  return kp;
-}
