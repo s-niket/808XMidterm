@@ -121,3 +121,8 @@ doxygen <file-name>
 ## License
 
 This software is licensed under the MIT license.
+
+
+## Google Mock Testing
+
+To implement GMock testing (https://github.com/abseil/googletest/blob/master/googlemock/README.md), a new class was made named Dimensions. Class Vehicle uses method of class Dimension and thus unit testing cannot be performed by testing methods of each class individually. A mock class of class Dimensions was utilized for testing class Vehicle's methods. The object of the mock class was passed to the Vehicle class' object and the test cases were implemented. The dependencies needed for mock testing: Copy folder vendor/ (https://github.com/mlapin/libsdca/tree/master/vendor) into your repository and also make changes in the CMakeLists to add gmock dependencies. 
